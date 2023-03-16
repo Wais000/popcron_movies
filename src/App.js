@@ -27,8 +27,7 @@ function App() {
   // };
   return (
     <div className="App">
-      welcome to popcorn
-      {/* {links?.total_pages} */}
+
       <Router>
         <Header/>
         <Routes>
