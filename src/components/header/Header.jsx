@@ -18,12 +18,13 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
+
   const [showSearch, setShowSearch] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-      window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, [location]);
 
   // const controlNavbar = () => {
@@ -47,12 +48,12 @@ const Header = () => {
   // }, [lastScrollY]);
 
   const searchQueryHandler = (event) => {
-      if (event.key === "Enter" && query.length > 0) {
-          navigate(`/search/${query}`);
-          setTimeout(() => {
-              setShowSearch(false);
-          }, 1000);
-      }
+    if (event.key === "Enter" && query.length > 0) {
+      navigate(`/search/${query}`);
+      setTimeout(() => {
+        setShowSearch(false);
+      }, 1000);
+    }
   };
 
   // const openSearch = () => {
@@ -76,17 +77,15 @@ const Header = () => {
 
   // );
 
- const openSearch = () => {
-      setMobileMenu(false);
-      setShowSearch(true);
+  const openSearch = () => {
+    setMobileMenu(false);
+    setShowSearch(true);
   };
 
   const openMobileMenu = () => {
-      setMobileMenu(true);
-      setShowSearch(false);
+    setMobileMenu(true);
+    setShowSearch(false);
   };
-
-
 
   return (
     <header>
@@ -96,28 +95,27 @@ const Header = () => {
           alt="logo"
           width="100%"
           height="100%"
-          viewBox="2 2 5 6"
-          border="2px solid red"
+          // viewBox="2 2 5 6"
+         
         />
       </Link>
-
 
       <ul className={`nav-items ${isOpen && "open"}`}>
         <li menuItem>Movies</li>
         <li menuItem>TV Shows</li>
-        <li menuItem>{/* //             <BsSearch /> */}</li>
       </ul>
 
       <div
         className={`nav-toggle ${isOpen && "open"}`}
+        onClick={() => setIsOpen(!isOpen)}>     
+        <div className="bars2" onClick={openSearch}>  <BsSearch /> </div>
+        <div className="bar1" onClick={openMobileMenu}></div>
 
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <div className="bars2" onClick={openSearch }><BsSearch /></div>
- <div className="bar1" onClick={openMobileMenu}> </div>
-        </div>
-       
-      
+       <div className="searchInput">
+        <input type="text" placeholder="search..." />
+      </div>
+      </div>
+ 
     </header>
   );
 };

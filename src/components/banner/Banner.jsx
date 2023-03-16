@@ -37,7 +37,7 @@ function Banner() {
             <Link style={{textDecoration:"none",color:"white"}} to={`/Banner/${movie.id}`} >
               {/* to={`/movie/${movie.id}`} */}
             
-              <div className="posterContainer" key={movie.id}>
+              <div className="posterImage" key={movie.id}>
                 <img src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}/>
               </div>
               <div className="posterImage__overlay">
@@ -53,7 +53,12 @@ function Banner() {
                                 </div>
             </Link>
           ))}
+
       </Carousel>
+                <div className="searchInput">
+        <input type="text" placeholder="search..." />
+        <button>Search</button>
+      </div>
     </div>
   );
 }
