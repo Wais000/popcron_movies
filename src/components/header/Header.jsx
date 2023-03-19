@@ -103,6 +103,8 @@ const Header = () => {
       <ul className={`nav-items ${isOpen && "open"}`}>
         <li menuItem>Movies</li>
         <li menuItem>TV Shows</li>
+        <li menuItem>Movies</li>
+        <li menuItem>TV Shows</li>
       </ul>
 
       <div
