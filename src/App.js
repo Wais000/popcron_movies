@@ -33,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Banner/:id" element={<MovieDetails />} />
+          <Route path="/movieTrend/:id" element={<MovieDetails />} />
           <Route path="/mediaType/:id" element={<Explore />} />
           <Route path="/search/:query" element={<Search />} />
           <Route path="*" element={<PageNotFound />} />

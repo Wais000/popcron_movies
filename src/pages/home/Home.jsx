@@ -1,13 +1,13 @@
 import React from 'react';
 import Banner from '../../components/banner/Banner.jsx';
 import TVSection from '../../components/cards/TVSection.jsx';
-import Movies from '../Movies/Movies.jsx';
+import Trending from '../trending/Trending.jsx';
 
 function Home() {
   return (
     <div>
     <Banner/>
-    <Movies/>
+    <Trending/>
     <TVSection/>
     
     </div>

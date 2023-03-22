@@ -76,7 +76,9 @@
     input {
         width: calc(90% - 90px);
         height: 70px;
-        background-color: white;
+        background: rgba(255, 249, 249, 0.555);
+        backdrop-filter: blur(3.5px);
+        -webkit-backdrop-filter: blur(4px);
         outline: 0;
         border: 0;
         border-radius: 30px 0 0 30px;
