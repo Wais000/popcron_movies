@@ -1,135 +1,159 @@
 @import "../globle/colors.scss";
 
-
 header {
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  .headerLists {
+    font-size:16px;
     text-transform: capitalize;
-    position: fixed;
-    font-weight: 600;
+    border: 2px solid orange;
+    // font-weight: 600;
     height: 8vh;
     width: 100%;
     top: 0;
     right: 0;
-    z-index: 100;
+    padding: 4px 5px 4px 35px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: $font-secondary;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-      .logo {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-  }
-  }
-  .nav-items {
-    color: white;
-    display: flex;
-    font-size: 1.3rem;
-    width: 60%;
-    justify-content: space-evenly;
-    list-style: none;
-  }
-  header li a {
-    color: white;
-    transition: 0.5s;
-  }
-  header li a:hover {
-    color: #fff;
-    text-shadow: 0 0 10px #04bede, 0 0 20px #42d3ec, 0 0 25px #63d6eb,
-      0 0 30px #8addeb, 0 0 35px #ffffff;
-  }
-//   header .logo {
-//     z-index: 1000;
-//     width: 15%;
-//     height: 7vh;
-//     background-image: url("../pictures/logo.svg");
-//     background-position: center;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//   }
-
-.nav-toggle {
-    display: none;
-    width: 80%;
-    border: 2px solid red;
-}
-@media (max-width: 700px) {
-    header > .nav-items {
-      position: absolute;
-      top:67px;
+    .logo {
+      height: 100%;
       display: flex;
-      flex-direction: column;
-      /* background: #04bdded5; */
-      background: rgba(255, 255, 255, 0.896);
-      margin: auto;
-      width: 70%;
-      height: 150px;
-      padding: 10px;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      transform: translateX(-150%);
-      transition: all 0.45s;
-    }
-    .nav-items li a{
-      color: #023047;
-    }
-    li {
-      margin: 0 auto;
-      
-    }
-    header > .nav-items > a::before {
-      background: transparent;
-    }
-    header > .nav-items.open {
-      transform: translateX(0);
-    }
-    header > .nav-toggle {
-      display: flex;
-      width: 50px;
-      height: 50px;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
     }
-    .nav-toggle > .bar1, .bar2  {
-      position: relative;
-      width: 32px;
-      height: 2px;
-      background: #ffffff;
-      transition: all 0.45s ease-in-out;
-    }
-    .nav-toggle > .bar1::before,
-    .nav-toggle > .bar1::after {
-      content: "";
-      position: absolute;
-      height: 2px;
-      background: #ffffff;
-      border-radius: 2px;
-      transition: all 0.45s ease-in-out;
-    }
-    .nav-toggle > .bar1::before {
-      width: 32px;
-      transform: translateY(-8px);
-      right: 0;
-    }
-  
-    .nav-toggle > .bar1::after {
-      width: 32px;
-      transform: translateY(8px);
-    }
-    .nav-toggle.open > .bar1 {
-      transform: translateX(-40px);
-      background: transparent;
-    }
-  
-    .nav-toggle.open > .bar1::before {
-      width: 32px;
-      transform: rotate(45deg) translate(26px, -26px);
-    }
-  
-    .nav-toggle.open > .bar1::after {
-      transform: rotate(-45deg) translate(26px, 26px);
-    }
+  }
+}
+
+.categories {
+  width: 100%;
+  display: flex;
+  // position: fixed;
+  // border: 4px solid #63d6eb;
+  flex-wrap: wrap;
+  padding: 2%;
+  // background: #023047;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+}
+p {
+  // width: 50%;
+  display: flex;
+  border-radius: 5px;
+  margin: 3px;
+  flex-direction: row;
+  color: wheat;
+  // border: 2px solid lightgreen;
+  padding: 0.5% 1.2%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.nav-items {
+  color: white;
+  display: flex;
+  font-size:$font-SecodarySize;
+  width: 60%;
+  justify-content: space-evenly;
+  list-style: none;
+}
+header li  {
+  color: white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+header li:hover {
+  color: #fff;
+  text-shadow: 0 0 10px #04bede, 0 0 20px #42d3ec, 0 0 25px #63d6eb,
+    0 0 30px #8addeb, 0 0 35px #ffffff;
+}
+
+.nav-toggle {
+  display: none;
+  width: 80%;
+  border: 2px solid red;
+}
+
+@media (max-width: 700px) {
+  header > .nav-items {
+    position: absolute;
+    top: 67px;
+    display: flex;
+    flex-direction: column;
+    /* background: #04bdded5; */
+    background: rgba(255, 255, 255, 0.896);
+    margin: auto;
+    width: 70%;
+    height: 150px;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transform: translateX(-150%);
+    transition: all 0.45s;
+  }
+  .nav-items li a {
+    color: #023047;
+  }
+  li {
+    margin: 0 auto;
+  }
+  header > .nav-items > a::before {
+    background: transparent;
+  }
+  header > .nav-items.open {
+    transform: translateX(0);
+  }
+  header > .nav-toggle {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .nav-toggle > .bar1,
+  .bar2 {
+    position: relative;
+    width: 32px;
+    height: 2px;
+    background: #ffffff;
+    transition: all 0.45s ease-in-out;
+  }
+  .nav-toggle > .bar1::before,
+  .nav-toggle > .bar1::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 2px;
+    transition: all 0.45s ease-in-out;
+  }
+  .nav-toggle > .bar1::before {
+    width: 32px;
+    transform: translateY(-8px);
+    right: 0;
+  }
+
+  .nav-toggle > .bar1::after {
+    width: 32px;
+    transform: translateY(8px);
+  }
+  .nav-toggle.open > .bar1 {
+    transform: translateX(-40px);
+    background: transparent;
+  }
+
+  .nav-toggle.open > .bar1::before {
+    width: 32px;
+    transform: rotate(45deg) translate(26px, -26px);
+  }
+
+  .nav-toggle.open > .bar1::after {
+    transform: rotate(-45deg) translate(26px, 26px);
+  }
 }
