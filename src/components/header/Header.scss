@@ -40,20 +40,21 @@ header {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(3.5px);
   -webkit-backdrop-filter: blur(3.5px);
+  .genersName {
+    // width: 50%;
+    display: flex;
+    border-radius: 5px;
+    margin: 3px;
+    flex-direction: row;
+    color: wheat;
+    // border: 2px solid lightgreen;
+    padding: 0.5% 1.2%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(4px);
+  }
 }
-p {
-  // width: 50%;
-  display: flex;
-  border-radius: 5px;
-  margin: 3px;
-  flex-direction: row;
-  color: wheat;
-  // border: 2px solid lightgreen;
-  padding: 0.5% 1.2%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3.5px);
-  -webkit-backdrop-filter: blur(4px);
-}
+
 .nav-items {
   color: white;
   display: flex;

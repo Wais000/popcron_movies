@@ -8,8 +8,8 @@ import "./Header.scss";
 import { BsSearch } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../globle/moviesApi";
-import { getCategories } from "../features/movieSlice/movieSlice";
-import ContentContainer from "../contnetContainer/ContentContainer";
+import { getGenres } from "../features/movieSlice/movieSlice";
+
 import logo from "../pictures/logo.svg";
 const Header = () => {
 
@@ -43,7 +43,7 @@ const navigateToLists=(e)=>{
   }, [location]);
 
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.movies);
+  const { genres } = useSelector((state) => state.movies);
   useEffect(() => {
     MoviesApi();
   }, [dispatch]);
@@ -68,7 +68,7 @@ const navigateToLists=(e)=>{
   };
 
   const myDispatch = useDispatch();
-  // const { categories } = useSelector((state) => state.movies);
+  // const { genres } = useSelector((state) => state.movies);
   useEffect(() => {
     MoviesApi();
   }, [myDispatch]);
@@ -76,10 +76,10 @@ const navigateToLists=(e)=>{
   const MoviesApi = () => {
     fetchData("/genre/movie/list").then((Response) => {
       console.log("I am the response of gener", Response);
-      dispatch(getCategories(Response));
+      dispatch(getGenres(Response));
     });
   };
-  console.log("i am the type of geners", typeof categories);
+  console.log("i am the type of geners", typeof genres);
 
   const [toggle, setToggle] = useState(true)
   const togelHandler=()=>{
@@ -126,10 +126,10 @@ const navigateToLists=(e)=>{
               {/* header list */}
 
 {toggle && (<div className="categories">
-          {categories.genres &&
-            categories.genres.map((genre) => (
+          {genres.genres &&
+            genres.genres.map((genre) => (
            
-                <p >{genre.name}</p>
+                <p className="genersName" >{genre.name}</p>
 
             ))}
         </div>) 

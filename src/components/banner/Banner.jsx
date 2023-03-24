@@ -3,25 +3,24 @@ import "./Banner.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { fetchData } from "../globle/moviesApi";
-import { getUrl } from "../features/movieSlice/movieSlice";
+import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-
 function Banner() {
   const dispatch = useDispatch();
-  const { links } = useSelector((state) => state.movies);
+  const { popular } = useSelector((state) => state.movies);
   useEffect(() => {
-      popularApi();
+    popularApi();
   }, [dispatch]);
 
   const popularApi = () => {
     fetchData("/movie/popular").then((Response) => {
       console.log("I am the response of API", Response);
-      dispatch(getUrl(Response));
+      dispatch(getPopular(Response));
     });
   };
-  console.log(typeof links.results);
+  console.log(typeof popular.results);
 
   return (
     <div className="poster">
@@ -32,30 +31,40 @@ function Banner() {
         infiniteLoop={true}
         showStatus={false}
       >
-        {links.results &&
-          links.results.map((movie) => (
-            <Link style={{textDecoration:"none",color:"white"}} to={`/Banner/${movie.id}`} >
+        {popular.results &&
+          popular.results.map((movie) => (
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/Banner/${movie.id}`}
+            >
               {/* to={`/movie/${movie.id}`} */}
-            
+
               <div className="posterImage" key={movie.id}>
-                <img src={`https://image.tmdb.org/t/p/original${movie && movie.backdrop_path}`}/>
+                <img
+                  src={`https://image.tmdb.org/t/p/original${
+                    movie && movie.backdrop_path
+                  }`}
+                />
               </div>
               <div className="posterImage__overlay">
-                                    <div className="posterImage__title">{movie ? movie.original_title: ""}</div>
-                                    <div className="posterImage__runtime">
-                                        {movie ? movie.release_date : ""}
-                                        <span className="posterImage__rating">
-                                            {movie ? movie.vote_average :""}
-                                            <i className="fas fa-star" />{" "}
-                                        </span>
-                                    </div>
-                                    <div className="posterImage__description">{movie ? movie.overview : ""}</div>
-                                </div>
+                <div className="posterImage__title">
+                  {movie ? movie.original_title : ""}
+                </div>
+                <div className="posterImage__runtime">
+                  {movie ? movie.release_date : ""}
+                  <span className="posterImage__rating">
+                    {movie ? movie.vote_average : ""}
+                    <i className="fas fa-star" />{" "}
+                  </span>
+                </div>
+                <div className="posterImage__description">
+                  {movie ? movie.overview : ""}
+                </div>
+              </div>
             </Link>
           ))}
-
       </Carousel>
-                <div className="searchInput">
+      <div className="searchInput">
         <input type="text" placeholder="search..." />
         <button>Search</button>
       </div>

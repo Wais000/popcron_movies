@@ -1,0 +1,12 @@
+.switchTab{
+    width: 90%;
+    // border: 2px solid red;
+    margin: 0 auto;
+    display: flex;
+    justify-content: end;
+ 
+    }
+    .switchTab:nth-last-child(even) {
+        background-color: lightyellow;
+    }
+    

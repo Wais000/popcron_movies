@@ -1,0 +1,51 @@
+@import "../../../components/globle/colors.scss";
+.rate {
+  display: flex;
+  align-items: center;
+  background: none;
+}
+
+.mainContainer {
+//   border: 2px solid olivedrab;
+  width: 90%;
+  margin: 0 auto;
+}
+.caroselBox {
+  width: 100%;
+//   border: 2px solid red;
+  padding: 2px;
+//   margin: 5px;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.3s;
+  }
+}
+.cardInner {
+  cursor: pointer;
+//   margin: 5px;
+//   width: 100%;
+  img {
+    width: 95%;
+    height: auto;
+  }
+ 
+}
+.cardBottom{
+    width:95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background:$primary-colorTow;
+    padding: 6% 5% 5% 5%;
+    height: 100px;
+    .cardInfo{
+        color: white;
+        .rateRelease{
+          display: flex;  
+       justify-content: space-between;
+        }
+        
+    }
+}
