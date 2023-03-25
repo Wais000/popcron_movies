@@ -35,11 +35,11 @@ function SwitchTab() {
   const { topRated } = useSelector((state) => state.movies);
   const { upcoming } = useSelector((state) => state.movies);
 
-  // useEffect(() => {
-  //   popHandler();
-  //   upHandler();
-  //   ratHandler();
-  // }, [upDispatch, popDispatch, topDispatch]);
+  useEffect(() => {
+    popHandler();
+    upHandler();
+    ratHandler();
+  }, [upDispatch, popDispatch, topDispatch]);
 
   const popHandler = () => {
     fetchData("/movie/popular").then((setPopularMT) => (Response) => {
@@ -142,6 +142,7 @@ function SwitchTab() {
 
       {value === "top-rated" ? (
         <div className="topRateContainer">
+           <h2>Top Rated Movies</h2>
           {/* <h2>top rated Movies</h2> */}
           <Slider {...settings}>
             {topRated.results &&
@@ -179,15 +180,81 @@ function SwitchTab() {
         </div>
       ) : value === "upcomming" ? (
         <div className="upcommingContainer">
-          <h1>I am the the upcomming</h1>
+          <h2>Upcomming Movies</h2>
+          <Slider {...settings}>
+            {upcoming.results &&
+              upcoming.results.map((comming) => (
+                <div className="caroselBox" key={comming.id}>
+                  <Link>
+                    <div className="cardInner">
+                      <div className="cardTop">
+                        <img
+                          src={`https://image.tmdb.org/t/p/original${
+                            comming && comming.poster_path
+                          }`}
+                        />
+                      </div>
+
+                      <div className="cardBottom">
+                        <div className="cardInfo">
+                          <div className="rateRelease">
+                            <div className="rate">
+                              <BsStarFill />{" "}
+                              <p> {comming ? comming.vote_average : ""}</p>
+                            </div>
+                            <div className="release">
+                              <p> {comming ? comming.release_date : ""}</p>
+                            </div>
+                          </div>
+                          <p>{comming ? comming.original_title : ""}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+          </Slider>
         </div>
       ) : value === "popular" ? (
         <div className="popularContainer">
-          <h1>I am the the popular</h1>
+           <h2>Popular Movies</h2>
+        <Slider {...settings}>
+            {popular.results &&
+              popular.results.map((pop) => (
+                <div className="caroselBox" key={pop.id}>
+                  <Link>
+                    <div className="cardInner">
+                      <div className="cardTop">
+                        <img
+                          src={`https://image.tmdb.org/t/p/original${
+                            pop && pop.poster_path
+                          }`}
+                        />
+                      </div>
+
+                      <div className="cardBottom">
+                        <div className="cardInfo">
+                          <div className="rateRelease">
+                            <div className="rate">
+                              <BsStarFill />{" "}
+                              <p> {pop ? pop.vote_average : ""}</p>
+                            </div>
+                            <div className="release">
+                              <p> {pop ? pop.release_date : ""}</p>
+                            </div>
+                          </div>
+                          <p>{pop ? pop.original_title : ""}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))}
+          </Slider>
         </div>
-      ) : (
-        value === null
-      )}
+      ) : 
+        value == null
+     }
     </div>
   );
 }

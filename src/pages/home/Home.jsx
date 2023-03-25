@@ -9,10 +9,11 @@ function Home() {
       <Banner />
 
       <SwitchTab />
-      <h2>Shows</h2>
-      <TvShowTrending />
+    
       <h2>Movies</h2>
       <MovieTrending />
+      <h2>Shows</h2>
+      <TvShowTrending />
     </div>
   );
 }

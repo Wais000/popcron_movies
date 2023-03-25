@@ -81,12 +81,12 @@ const navigateToLists=(e)=>{
   };
   console.log("i am the type of geners", typeof genres);
 
-  const [toggle, setToggle] = useState(true)
+  const [toggle, setToggle] = useState(false)
   const togelHandler=()=>{
     setToggle(!toggle)
     setTimeout(() => {
       setToggle(false);
-  }, 15000);
+  }, 10000);
   }
 
   return (

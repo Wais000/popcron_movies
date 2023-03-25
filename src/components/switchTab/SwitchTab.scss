@@ -1,5 +1,5 @@
-.switchTab{
-    width: 90%;
+.tabBar {
+    width: 80%;
     // border: 2px solid red;
     margin: 0 auto;
     display: flex;
@@ -8,5 +8,9 @@
     }
     .switchTab:nth-last-child(even) {
         background-color: lightyellow;
+    }
+    .topRateContainer, .popularContainer, .upcommingContainer{
+        width: 90%;
+        margin: 2% auto;
     }
     
