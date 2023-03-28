@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Banner.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -6,8 +6,15 @@ import { fetchData } from "../globle/moviesApi";
 import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Banner() {
+  const [query, setQuery] = useState("");
+  const [showSearch, setShowSearch] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [mobileMenu, setMobileMenu] = useState(false);
+
   const dispatch = useDispatch();
   const { popular } = useSelector((state) => state.movies);
   useEffect(() => {
@@ -20,7 +27,13 @@ function Banner() {
       dispatch(getPopular(Response));
     });
   };
-  console.log(typeof popular.results);
+
+
+  const searchQueryHandler = (event) => {
+    if (event.key === "Enter" && query.length > 0) {
+        navigate(`/search/${query}`);
+    }
+};
 
   return (
     <div className="poster">
@@ -37,7 +50,7 @@ function Banner() {
               style={{ textDecoration: "none", color: "white" }}
               to={`/Banner/${movie.id}`}
             >
-              {/* to={`/movie/${movie.id}`} */}
+
 
               <div className="posterImage" key={movie.id}>
                 <img
@@ -64,10 +77,18 @@ function Banner() {
             </Link>
           ))}
       </Carousel>
-      <div className="searchInput">
-        <input type="text" placeholder="search..." />
-        <button>Search</button>
-      </div>
+
+          <div className="searchInput">
+            <input
+              type="text"
+              placeholder="Search for a movie or tv show...."
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyUp={searchQueryHandler}
+            />
+
+            <button>Search</button>
+          </div>{" "}
+
     </div>
   );
 }

@@ -18,11 +18,11 @@ function MovieTrending() {
   }, [Dispatch]);
 
   const MovieTrending = () => {
-    fetchData("/movie/top_rated").then((Response) => {
+    fetchData("/movie/now_playing").then((Response) => {
       Dispatch(getCategories(Response));
     });
   };
-  console.log("i am the type of TvShowTrending", categories);
+  console.log("this api comes from latest movie", categories);
   const settings = {
     dots: true,
     infinite: false,
@@ -64,7 +64,9 @@ function MovieTrending() {
         categories.results.map((movieTrend) => (
          
           <div className="caroselBox" key={movieTrend.id}>
-            <Link>
+            <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to={`/MovieTrending/${movieTrend.id}`}>
               <div className="cardInner">
                 <div className="cardTop">
                   <img

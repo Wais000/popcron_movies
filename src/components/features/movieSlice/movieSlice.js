@@ -10,6 +10,7 @@ export const moviesSlice = createSlice({
     MovieTrending: {},
     TvShowTrending: {}, 
     categories: {},
+    searchRersult: {},
     genres: {},
   },
   reducers: {
@@ -37,11 +38,14 @@ export const moviesSlice = createSlice({
     getGenres: (state, action) => {
       state.genres = action.payload;
     },
+    getSearchRersult: (state, action) => {
+      state.searchRersult = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { getUrl, getCategories, getUpcoming, getTopRated, getPopular,  getMovieTrending,  getTvShowTrending, getGenres } =
+export const { getUrl, getCategories, getUpcoming, getTopRated, getPopular,  getMovieTrending,  getTvShowTrending, getGenres, getSearchRersult } =
   moviesSlice.actions;
 
 export default moviesSlice.reducer;

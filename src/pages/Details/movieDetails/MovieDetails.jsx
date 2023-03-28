@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react';
-import { getUrl } from '../../components/features/movieSlice/movieSlice';
-import { fetchData } from '../../components/globle/moviesApi';
+import { getUrl } from '../../../components/features/movieSlice/movieSlice';
+import { fetchData } from '../../../components/globle/moviesApi';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import './MovieDetails.scss'
@@ -9,7 +9,7 @@ import './MovieDetails.scss'
 function MovieDetails() {
   // const [movieId, setMovieID]=useState("")
   const dispatch = useDispatch();
-  const { id } = useParams()
+  const {mediaType,id } = useParams()
 
   useEffect(() => {
     DetailsApi()
@@ -19,6 +19,7 @@ function MovieDetails() {
   const { links } = useSelector((state) => state.movies);
   const DetailsApi = () => {
     fetchData(`/movie/${id}`).then((Response) => {
+    // fetchData(`/list/${id}`).then((Response) => {
       console.log("I am the response details", Response);
       dispatch(getUrl(Response));
     });

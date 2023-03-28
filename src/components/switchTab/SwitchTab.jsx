@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./SwitchTab.scss";
 import { useSelector, useDispatch } from "react-redux";
-// import Tabs from "@mui/material/Tabs";
-// import Tab from "@mui/material/Tab";
-// import PhoneIcon from "@mui/icons-material/Phone";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-// import PersonPinIcon from "@mui/icons-material/PersonPin";
 import { BsStarFill } from "react-icons/bs";
 import Slider from "react-slick";
 import { fetchData } from "../globle/moviesApi";
@@ -35,11 +30,7 @@ function SwitchTab() {
   const { topRated } = useSelector((state) => state.movies);
   const { upcoming } = useSelector((state) => state.movies);
 
-  useEffect(() => {
-    popHandler();
-    upHandler();
-    ratHandler();
-  }, [upDispatch, popDispatch, topDispatch]);
+
 
   const popHandler = () => {
     fetchData("/movie/popular").then((setPopularMT) => (Response) => {
@@ -61,6 +52,12 @@ function SwitchTab() {
     });
   };
   console.log("topRated", topRated);
+
+  useEffect(() => {
+    popHandler();
+    upHandler();
+    ratHandler();
+  }, [upDispatch, popDispatch, topDispatch]);
 
   const settings = {
     dots: true,
@@ -141,14 +138,17 @@ function SwitchTab() {
       </div>
 
       {value === "top-rated" ? (
+       
         <div className="topRateContainer">
            <h2>Top Rated Movies</h2>
           {/* <h2>top rated Movies</h2> */}
+       
           <Slider {...settings}>
             {topRated.results &&
               topRated.results.map((rate) => (
+                <Link to={`/SwitchTab/${rate.id}`}>
                 <div className="caroselBox" key={rate.id}>
-                  <Link>
+             
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -173,19 +173,22 @@ function SwitchTab() {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                
                 </div>
-              ))}
+                </Link>   ))}
           </Slider>
+            
         </div>
+     
       ) : value === "upcomming" ? (
         <div className="upcommingContainer">
           <h2>Upcomming Movies</h2>
           <Slider {...settings}>
             {upcoming.results &&
               upcoming.results.map((comming) => (
+                <Link to={`/SwitchTab/${comming.id}`}>
                 <div className="caroselBox" key={comming.id}>
-                  <Link>
+             
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -210,9 +213,9 @@ function SwitchTab() {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  
                 </div>
-              ))}
+          </Link>    ))}
           </Slider>
         </div>
       ) : value === "popular" ? (
@@ -221,8 +224,9 @@ function SwitchTab() {
         <Slider {...settings}>
             {popular.results &&
               popular.results.map((pop) => (
+                <Link to={`/SwitchTab/${pop.id}`}>
                 <div className="caroselBox" key={pop.id}>
-                  <Link>
+                  
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -247,9 +251,9 @@ function SwitchTab() {
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  
                 </div>
-              ))}
+          </Link>    ))}
           </Slider>
         </div>
       ) : 

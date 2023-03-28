@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../../components/globle/moviesApi";
 import {  getTvShowTrending } from "../../../components/features/movieSlice/movieSlice";
@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function TvShowTrending() {
+  // const [endpoint, setEndpoint] = useState("movie");
     const Dispatch = useDispatch();
   const { TvShowTrending } = useSelector((state) => state.movies);
   useEffect(() => {
@@ -64,7 +65,10 @@ function TvShowTrending() {
         TvShowTrending.results.map((movieTrend) => (
          
           <div className="caroselBox" key={movieTrend.id}>
-            <Link>
+            <Link
+                 style={{ textDecoration: "none", color: "white" }}
+                 to={`/TvShowTrending/${movieTrend.id}`}
+          >
               <div className="cardInner">
                 <div className="cardTop">
                   <img
