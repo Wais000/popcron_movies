@@ -10,9 +10,9 @@ function Home() {
 
       <SwitchTab />
     
-      <h2>Movies</h2>
+<br />
       <MovieTrending />
-      <h2>Shows</h2>
+     <br />
       <TvShowTrending />
     </div>
   );

@@ -30,8 +30,8 @@ function Search() {
         searchRersult.results.map((searchResults) => (
           <div className="searchCaroselBox" key={searchResults.id}>
             <Link
-            // style={{ textDecoration: "none", color: "white" }}
-            // to={`/Search/${movie.id}`}
+           style={{ textDecoration: "none", color: "white" }}
+          to={`/search/${searchResults.id}`}
             >
               <div className="searchCardInner">
                 <div className="searchCardTop">
@@ -53,7 +53,7 @@ function Search() {
                         {/* {searchResults ? searchResults.vote_average.substr(0,4): ""} */}
                       </div>
                     </div>
-                    <p> {searchResults ? searchResults.title.substr(0,24) : ""} </p>
+                    <p> {searchResults ? searchResults.title : ""} </p>
                   </div>
                 </div>{" "}
               </div>

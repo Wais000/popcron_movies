@@ -7,9 +7,8 @@ import './MovieDetails.scss'
 
 
 function MovieDetails() {
-  // const [movieId, setMovieID]=useState("")
   const dispatch = useDispatch();
-  const {mediaType,id } = useParams()
+  const {id } = useParams()
 
   useEffect(() => {
     DetailsApi()
@@ -19,7 +18,6 @@ function MovieDetails() {
   const { links } = useSelector((state) => state.movies);
   const DetailsApi = () => {
     fetchData(`/movie/${id}`).then((Response) => {
-    // fetchData(`/list/${id}`).then((Response) => {
       console.log("I am the response details", Response);
       dispatch(getUrl(Response));
     });

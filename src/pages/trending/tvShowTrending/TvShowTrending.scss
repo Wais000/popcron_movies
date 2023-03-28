@@ -27,7 +27,7 @@
 //   width: 100%;
   img {
     width: 95%;
-    height: auto;
+    height: 300px;
   }
  
 }
@@ -41,11 +41,22 @@
     padding: 6% 5% 5% 5%;
     height: 100px;
     .cardInfo{
-        color: white;
-        .rateRelease{
+      color: white;
+      .rateRelease{
+          width: 100%;
           display: flex;  
        justify-content: space-between;
-        }
-        
-    }
+      margin-bottom: 5%;
+      .rate{
+          display: flex;
+          justify-content: space-between;
+          // border: 1px solid green;
+          width:25%;
+          p{
+            margin-left: 1%;
+          }
+         }
+      }
+      
+  }
 }

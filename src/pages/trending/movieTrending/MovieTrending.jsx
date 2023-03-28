@@ -83,13 +83,13 @@ function MovieTrending() {
                   <div className="rateRelease">
                     <div className="rate">
                       <BsStarFill />{" "}
-                      <p> {movieTrend ? movieTrend.vote_average : ""}</p>
+                      <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
                     </div>
                     <div className="release">
-                      <p> {movieTrend ? movieTrend.release_date : ""}</p>
+                      <p> {movieTrend ? movieTrend.release_date.substr(0,4) : ""}</p>
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.original_title : ""}</p>
+                  <p>{movieTrend ? movieTrend.original_title.substr(0,24) : ""}</p>
                 </div>
                 </div>
               </div>

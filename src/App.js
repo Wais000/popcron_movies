@@ -11,6 +11,7 @@ import Search from "./pages/search/Search";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import TvDetails from "./pages/Details/TvDetails/TvDetails";
+import SearchDetails from "./pages/Details/searchDetails/SearchDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Banner/:id" element={<MovieDetails />} />
           <Route path="/search/:query" element={<Search />} />
+          <Route path="/search/:id" element={<SearchDetails />} />
           <Route path="/SwitchTab/:id" element={<MovieDetails />} />
+          <Route path="/search/:id" element={<MovieDetails />} />
           <Route path="/TvShowTrending/:id" element={<TvDetails />} />
           <Route path="/MovieTrending/:id" element={<MovieDetails />} />
           {/* <Route path="/TvShowTrending/:id" element={<MovieDetails />} /> */}

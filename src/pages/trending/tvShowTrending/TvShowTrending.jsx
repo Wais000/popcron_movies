@@ -60,6 +60,7 @@ function TvShowTrending() {
   };
   return (
     <div className="mainContainer">
+      <h1>Tv Shows list</h1>
     <Slider {...settings}>
       {TvShowTrending.results &&
         TvShowTrending.results.map((movieTrend) => (
@@ -84,13 +85,13 @@ function TvShowTrending() {
                   <div className="rateRelease">
                     <div className="rate">
                       <BsStarFill />{" "}
-                      <p> {movieTrend ? movieTrend.vote_average : ""}</p>
+                      <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
                     </div>
                     <div className="release">
-                      <p> {movieTrend ? movieTrend.release_date : ""}</p>
+                      {movieTrend ? movieTrend.first_air_date.substr(0,4) : ""}
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.original_title : ""}</p>
+                  <p>{movieTrend ? movieTrend.name : ""}</p>
                 </div>
                 </div>
               </div>
