@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../../components/globle/moviesApi";
-import { getCategories } from "../../../components/features/movieSlice/movieSlice";
+import { getMovieTrending } from "../../../components/features/movieSlice/movieSlice";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
 import { BsStarFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import "./MovieTrending.scss";
+import './MovieTrending.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function MovieTrending() {
     const Dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.movies);
+  const { MovieTrending } = useSelector((state) => state.movies);
   useEffect(() => {
-    MovieTrending();
+    movieLists();
   }, [Dispatch]);
 
-  const MovieTrending = () => {
+  const movieLists = () => {
     fetchData("/movie/now_playing").then((Response) => {
-      Dispatch(getCategories(Response));
+      Dispatch(getMovieTrending(Response));
     });
   };
-  console.log("this api comes from latest movie", categories);
+  console.log("this api comes from latest movie", MovieTrending);
   const settings = {
     dots: true,
     infinite: false,
@@ -59,13 +59,14 @@ function MovieTrending() {
   };
   return (
     <div className="mainContainer">
+      <h1>Movies list</h1>
     <Slider {...settings}>
-      {categories.results &&
-        categories.results.map((movieTrend) => (
+      {MovieTrending.results &&
+        MovieTrending.results.map((movieTrend) => (
          
           <div className="caroselBox" key={movieTrend.id}>
             <Link
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ textDecoration: "none", color: "white"}}
             to={`/MovieTrending/${movieTrend.id}`}>
               <div className="cardInner">
                 <div className="cardTop">

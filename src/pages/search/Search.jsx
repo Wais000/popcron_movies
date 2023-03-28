@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../../components/globle/moviesApi";
 import { useParams } from "react-router-dom";
+import { BsStarFill } from "react-icons/bs";
 import { getSearchRersult } from "../../components/features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -24,33 +25,35 @@ function Search() {
   }, [query]);
 
   return (
-    <div className="mainContainer">
+    <div className="searchMainContainer">
       {searchRersult.results &&
         searchRersult.results.map((searchResults) => (
-          <div className="caroselBox" key={searchResults.id}>
+          <div className="searchCaroselBox" key={searchResults.id}>
             <Link
             // style={{ textDecoration: "none", color: "white" }}
             // to={`/Search/${movie.id}`}
             >
-              <div className="cardInner">
-                <div className="cardTop">
+              <div className="searchCardInner">
+                <div className="searchCardTop">
                   <img
                     src={`https://image.tmdb.org/t/p/original${
                       searchResults && searchResults.poster_path
                     }`}
                   />
                 </div>
-                <div className="cardBottom">
-                  <div className="cardInfo">
-                    <div className="rateRelease">
+                <div className="searchCardBottom">
+                  <div className="searchCardInfo">
+                    <div className="searchRateRelease">
                       <div className="rate">
-                        {searchResults ? searchResults.vote_average : ""}
+                      <BsStarFill /> 
+                       <p>{searchResults ? searchResults.vote_average.toFixed(1): ""}</p> 
                       </div>
                       <div className="release">
-                        {searchResults ? searchResults.release_date : ""}
+                        {searchResults ? searchResults.release_date.substr(0,4) : ""}
+                        {/* {searchResults ? searchResults.vote_average.substr(0,4): ""} */}
                       </div>
                     </div>
-                    <p> {searchResults ? searchResults.title : ""} </p>
+                    <p> {searchResults ? searchResults.title.substr(0,24) : ""} </p>
                   </div>
                 </div>{" "}
               </div>
