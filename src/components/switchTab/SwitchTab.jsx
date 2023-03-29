@@ -108,7 +108,7 @@ function SwitchTab() {
             variant="primary"
             value="top-rated"
           >
-            top rated
+            <a> top rated</a>
           </button>
           <button
             className="menueItems"

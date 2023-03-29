@@ -18,7 +18,6 @@ function TvDetails() {
  const { links } = useSelector((state) => state.movies);
  const DetailsApi = () => {
    fetchData(`/tv/${id}`).then((Response) => {
-   // fetchData(`/list/${id}`).then((Response) => {
      console.log("I am the response details", Response);
      dispatch(getUrl(Response));
    });

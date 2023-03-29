@@ -1,16 +1,45 @@
+@import'../globle/colors.scss';
 .tabBar {
-    width: 80%;
-    // border: 2px solid red;
-    margin: 0 auto;
+  width: 89%;
+  // border: 2px solid red;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  padding: 0;
+  .listsContainer {
     display: flex;
+    width: 35%;
+    // border: 2px solid red;
     justify-content: end;
- 
+    .menueItems {
+      font-family: "Poppins", sans-serif;
+      line-height: 1.5;
+      text-decoration: none;
+      border-radius: 0;
+    //   border: 2px solid red;
+      width: 33.3%;
+      box-shadow: inset 0 0 0 0 #ffffff;
+      color:white;
+      padding: 0 0.25rem;
+      margin: 0 -0.25rem;
+      transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
-    .switchTab:nth-last-child(even) {
-        background-color: lightyellow;
+    .menueItems:hover {
+      box-shadow: inset 220px 0 0 0 $secondary-color;
+      color: $primary-colorTow;
     }
-    .topRateContainer, .popularContainer, .upcommingContainer{
-        width: 90%;
-        margin: 2% auto;
+    .menueItems:focus{
+        background-color:$secondary-color;
+        color: $primary-colorTow ;
     }
-    
+  }
+}
+.switchTab:nth-last-child(even) {
+  background-color: lightyellow;
+}
+.topRateContainer,
+.popularContainer,
+.upcommingContainer {
+  width: 90%;
+  margin: 2% auto;
+}
