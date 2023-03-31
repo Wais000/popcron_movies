@@ -7,6 +7,7 @@ import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
+import {BsSearch} from 'react-icons/bs'
 
 function Banner() {
   const [query, setQuery] = useState("");
@@ -28,12 +29,11 @@ function Banner() {
     });
   };
 
-
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
-        navigate(`/search/${query}`);
+      navigate(`/search/${query}`);
     }
-};
+  };
 
   return (
     <div className="poster">
@@ -50,8 +50,6 @@ function Banner() {
               style={{ textDecoration: "none", color: "white" }}
               to={`/Banner/${movie.id}`}
             >
-
-
               <div className="posterImage" key={movie.id}>
                 <img
                   src={`https://image.tmdb.org/t/p/original${
@@ -60,7 +58,7 @@ function Banner() {
                 />
               </div>
               <div className="posterImage__overlay">
-                <div className="posterImage__title">
+                {/* <div className="posterImage__title">
                   {movie ? movie.original_title : ""}
                 </div>
                 <div className="posterImage__runtime">
@@ -72,24 +70,28 @@ function Banner() {
                 </div>
                 <div className="posterImage__description">
                   {movie ? movie.overview : ""}
-                </div>
+                </div> */}
               </div>
             </Link>
           ))}
       </Carousel>
-
-          <div className="searchInput">
-            <input
-              type="text"
-              placeholder="Search for a movie or tv show...."
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyUp={searchQueryHandler}
-            />
-
-            <button>Search</button>
-          </div>{" "}
-
-    </div>
+     
+      <form className="inputbox">
+        <input
+        required="required"
+          type="text"
+          class="input"
+          name="txt"
+          onmouseout="this.value = ''; this.blur();"
+          placeholder="Search for a movie or tv show...."
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyUp={searchQueryHandler}
+        />
+ <button type="reset" class="del"></button>
+      </form>{" "}
+      {/* <BsSearch class="fab fa-youtube"/> */}
+      </div>
+ 
   );
 }
 

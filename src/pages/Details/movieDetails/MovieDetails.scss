@@ -4,17 +4,21 @@
     display: flex;
     flex-direction:column;
     align-items: center;
+    border: 3px solid orange;
 }
 
-.movie__intro {
-    width: 80%;
+.movieBackground {
+    width: 100%;
+    // position: absolute;
+    // border: 2px solid rgb(166, 255, 0);
 }
 
 .movie__backdrop {
     width: 100%;
-    height: 500px;
-    object-fit:cover;
+    // height: auto;
+    // object-fit:cover;
     object-position: 0 35%;
+    border: 2px solid red;
 }
 
 .movie__detail {
