@@ -1,17 +1,16 @@
+@import'../../../components/globle/colors.scss';
 .movie {
     width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction:column;
+  height: auto;
+    // display: flex;
+    // flex-direction:column;
     align-items: center;
     border: 3px solid orange;
+    padding-top: 20%;
+    
 }
 
-.movieBackground {
-    width: 100%;
-    // position: absolute;
-    // border: 2px solid rgb(166, 255, 0);
-}
+
 
 .movie__backdrop {
     width: 100%;
@@ -23,10 +22,13 @@
 
 .movie__detail {
     align-items: center;
-    width: 75%;
+    width: 80%;
     display: flex;
-    position: relative;
-    bottom: 225px;
+    height: auto;
+justify-content: space-between;
+border: 2px solid rebeccapurple;
+
+
 }
 
 .movie__detailLeft {
@@ -35,16 +37,21 @@
 
 .movie__poster {
     width:300px;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.86) 0px 22px 40px 6px;
+    // border-radius: 10px;
+    // box-shadow: rgba(0, 0, 0, 0.86) 0px 10px 10px 3px;
+    // border: 2px solid yellowgreen;
 }
 
 .movie__detailRight {
     color: white;
+    padding: 2%;
     display: flex;
     flex-direction: column;
-    height: 450px;
+    height: auto;
     justify-content:space-between ;
+    background-color:rgba(22, 35, 43, 0.626);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .movie__detailRightTop > div{
@@ -96,11 +103,13 @@
     display: flex;
     justify-content: space-between;
     width: 75%;
+    border: 3px solid green;
 }
 
-.movie__heading {
-    font-size: 2.2rem;
-}
+// .movie__heading {
+//     font-size: 2.2rem;
+//     border: 3px solid green;
+// }
 
 .movie__Button {
     display: flex;
@@ -128,11 +137,14 @@
 }
 
 .movie__production {
-    width: 85%;
+
+    width: 80%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: flex-end;
-    margin-bottom: 4rem;
+    // margin-bottom: 4rem;
+    border: 3px solid rgb(5, 5, 245);
 }
 
 

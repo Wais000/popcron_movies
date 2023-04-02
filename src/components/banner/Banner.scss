@@ -96,6 +96,27 @@
 //         font-size: 16px;
 //         cursor: pointer;
 //     }
+.wellcome{
+  display: flex;
+  align-items: center;
+ flex-direction: column;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .wellcomPop{
+    font-size:40px ;
+    font-weight: 700 bolder;
+    color: white;
+    // border: 3px solid red;
+  }
+
+  .subSentence{
+    font-size:25px;
+    color: white;
+  }
+}
+
 
 .inputbox {
   height: $size;

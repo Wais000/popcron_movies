@@ -22,20 +22,20 @@ function MovieDetails() {
     });
   };
 
-
   return (
-    <div className="movie"
-    style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${
+    <div
+      className="movie"
+      style={{
+        backgroundImage: `linear-gradient(to bottom,  rgba(45, 68, 82, 0.711), rgb(22, 35, 43)), url(https://image.tmdb.org/t/p/original${
           links ? links.backdrop_path : ""
-        })`, width:'100%', height:'100vh', backgroundPosition:'center', objectFit:'cover'
-      }}>
-      <div
-        className="movieBackground"
-        
-      >
-        {/* <img className="movie__backdrop" src={} /> */}
-      </div>
+        })`,
+        width: "100%",
+        height: "auto",
+        backgroundPosition: "center",
+        backgroundtSize: "cover",
+      }}
+    >
+
       <div className="movie__detail">
         <div className="movie__detailLeft">
           <div className="movie__posterBox">
@@ -83,36 +83,7 @@ function MovieDetails() {
           </div>
         </div>
       </div>
-      <div className="movie__links">
-        <div className="movie__heading">Useful Links</div>
-        {links && links.homepage && (
-          <a
-            href={links.homepage}
-            target="_blank"
-            style={{ textDecoration: "none" }}
-          >
-            <p>
-              <span className="movie__homeButton movie__Button">
-                Homepage <i className="newTab fas fa-external-link-alt"></i>
-              </span>
-            </p>
-          </a>
-        )}
-        {links && links.imdb_id && (
-          <a
-            href={"https://www.imdb.com/title/" + links.imdb_id}
-            target="_blank"
-            style={{ textDecoration: "none" }}
-          >
-            <p>
-              <span className="movie__imdbButton movie__Button">
-                IMDb<i className="newTab fas fa-external-link-alt"></i>
-              </span>
-            </p>
-          </a>
-        )}
-      </div>
-      <div className="movie__heading">Production companies</div>
+      {/* <div className="movie__heading">Production companies</div> */}
       <div className="movie__production">
         {links &&
           links.production_companies &&
