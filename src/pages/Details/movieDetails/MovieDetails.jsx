@@ -3,6 +3,10 @@ import { getUrl } from "../../../components/features/movieSlice/movieSlice";
 import { fetchData } from "../../../components/globle/moviesApi";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import {AiFillLike} from 'react-icons/ai'
+import {MdStarRate} from 'react-icons/md'
+import {MdAccessTimeFilled} from 'react-icons/md'
+import {RiMovie2Fill} from 'react-icons/ri'
 import "./MovieDetails.scss";
 
 function MovieDetails() {
@@ -35,40 +39,40 @@ function MovieDetails() {
         backgroundtSize: "cover",
       }}
     >
-      <div className="movie__detail">
-        <div className="movie__detailLeft">
-          <div className="movie__posterBox">
+      <div className="movieDetail">
+        <div className="BoxDetailLeft">
+          <div className="moviePosterBox">
             <img
-              className="movie__poster"
+              className="moviePoster"
               src={`https://image.tmdb.org/t/p/original${
                 links ? links.poster_path : ""
               }`}
             />
           </div>
         </div>
-        <div className="movie__detailRight">
-          <div className="movie__detailRightTop">
-            <div className="movie__name">
+        <div className="movieDetailRight">
+          <div className="movieDetailRightTop">
+            <div className="movieName">
               {links ? links.original_title : ""}
             </div>
             <div className="movieShortMessage">
-              <p>"{links ? links.tagline : ""}"</p>
+              <p>" {links ? links.tagline : ""}"</p>
             </div>
             <div className="MovieShortInfo">
-              <ul>
-                <li className="movieRating">
-                  {links ? links.vote_average.toFixed(1) : ""}
+              <ul className="shortDetails">
+                <li className="movieRating"><span><MdStarRate/></span> 
+                 <p> {links ? links.vote_average : ""}</p>
                 </li>
-                <li className="movieVoteCount">
+                <li className="movieVoteCount"> <span><AiFillLike/></span>
                   {links ? "(" + links.vote_count + ") votes" : ""}
                 </li>
-                <li className="movieRuntime">
+                <li className="movieRuntime"> <span><MdAccessTimeFilled/></span>
                   {" "}
                   {links ? links.runtime + " mins" : ""}
                 </li>
-                <li className="movieReleaseDate">
+                <li className="movieReleaseDate"> <span><RiMovie2Fill/></span>
                   {" "}
-                  {links ? "Release date: " + links.release_date : ""}
+                  {links ? " " + links.release_date : ""}
                 </li>
               </ul>
             </div>
@@ -86,8 +90,7 @@ function MovieDetails() {
           </div>
           <div className="movieDetails">
             <h3 className="synopsisTitle"> Overview </h3>
-                <p>{links ? links.overview : ""}</p>
-         
+            <p>{links ? links.overview : ""}</p>
           </div>
         </div>
       </div>
@@ -100,7 +103,7 @@ function MovieDetails() {
           links.production_companies.map((company) => (
             <>
               {company.logo_path && (
-                <span className="CompanyLogoContainer">
+                <div className="CompanyLogoContainer">
                   <img
                     className="ComapanyLogos"
                     src={
@@ -108,7 +111,7 @@ function MovieDetails() {
                     }
                   />
                   <span>{company.name}</span>
-                </span>
+                </div>
               )}
             </>
           ))}
