@@ -148,8 +148,8 @@ gap: 10px;
     border: none;
 }
 .movieGenre{
-    padding: 5px 0 5px 0;
-    width: 7%;
+    padding: 5px 8px 5px 8px;
+    width: 13%;
     // border: 2px solid white;
     border-radius: 15px;
 text-align: center;
@@ -215,6 +215,12 @@ background: $primary-color;
   align-items: flex-end;
   // margin-bottom: 4rem;
   // border: 3px solid rgb(5, 5, 245);
+}
+.movieProductionCompanies h2{
+    color: white;
+}
+.synopsisTitle{
+    margin-bottom: 1%;
 }
 
 .production {

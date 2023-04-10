@@ -3,10 +3,10 @@ import { getUrl } from "../../../components/features/movieSlice/movieSlice";
 import { fetchData } from "../../../components/globle/moviesApi";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import {AiFillLike} from 'react-icons/ai'
-import {MdStarRate} from 'react-icons/md'
-import {MdAccessTimeFilled} from 'react-icons/md'
-import {RiMovie2Fill} from 'react-icons/ri'
+import { AiFillLike } from "react-icons/ai";
+import { MdStarRate } from "react-icons/md";
+import { MdAccessTimeFilled } from "react-icons/md";
+import { RiMovie2Fill } from "react-icons/ri";
 import "./MovieDetails.scss";
 
 function MovieDetails() {
@@ -52,26 +52,37 @@ function MovieDetails() {
         </div>
         <div className="movieDetailRight">
           <div className="movieDetailRightTop">
-            <div className="movieName">
-              {links ? links.original_title : ""}
-            </div>
+            <div className="movieName">{links ? links.original_title : ""}</div>
             <div className="movieShortMessage">
               <p>" {links ? links.tagline : ""}"</p>
             </div>
             <div className="MovieShortInfo">
               <ul className="shortDetails">
-                <li className="movieRating"><span><MdStarRate/></span> 
-                 <p> {links ? links.vote_average : ""}</p>
+                <li className="movieRating">
+                  <span>
+                    <MdStarRate />
+                  </span>
+                  <p> {links ? links.vote_average : ""}</p>
                 </li>
-                <li className="movieVoteCount"> <span><AiFillLike/></span>
+                <li className="movieVoteCount">
+                  {" "}
+                  <span>
+                    <AiFillLike />
+                  </span>
                   {links ? "(" + links.vote_count + ") votes" : ""}
                 </li>
-                <li className="movieRuntime"> <span><MdAccessTimeFilled/></span>
+                <li className="movieRuntime">
                   {" "}
+                  <span>
+                    <MdAccessTimeFilled />
+                  </span>{" "}
                   {links ? links.runtime + " mins" : ""}
                 </li>
-                <li className="movieReleaseDate"> <span><RiMovie2Fill/></span>
+                <li className="movieReleaseDate">
                   {" "}
+                  <span>
+                    <RiMovie2Fill />
+                  </span>{" "}
                   {links ? " " + links.release_date : ""}
                 </li>
               </ul>
@@ -95,7 +106,7 @@ function MovieDetails() {
         </div>
       </div>
       <div className="movieProductionCompanies">
-        <h3>Production companies</h3>{" "}
+        <h2>Production companies</h2>{" "}
       </div>
       <div className="production">
         {links &&
