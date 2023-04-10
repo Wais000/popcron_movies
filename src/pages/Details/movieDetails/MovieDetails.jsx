@@ -35,7 +35,6 @@ function MovieDetails() {
         backgroundtSize: "cover",
       }}
     >
-
       <div className="movie__detail">
         <div className="movie__detailLeft">
           <div className="movie__posterBox">
@@ -52,47 +51,58 @@ function MovieDetails() {
             <div className="movie__name">
               {links ? links.original_title : ""}
             </div>
-            <div className="movie__tagline">{links ? links.tagline : ""}</div>
-            <div className="movie__rating">
-              {links ? links.vote_average : ""} <i class="fas fa-star" />
-              <span className="movie__voteCount">
-                {links ? "(" + links.vote_count + ") votes" : ""}
-              </span>
+            <div className="movieShortMessage">
+              <p>"{links ? links.tagline : ""}"</p>
             </div>
-            <div className="movie__runtime">
-              {links ? links.runtime + " mins" : ""}
+            <div className="MovieShortInfo">
+              <ul>
+                <li className="movieRating">
+                  {links ? links.vote_average.toFixed(1) : ""}
+                </li>
+                <li className="movieVoteCount">
+                  {links ? "(" + links.vote_count + ") votes" : ""}
+                </li>
+                <li className="movieRuntime">
+                  {" "}
+                  {links ? links.runtime + " mins" : ""}
+                </li>
+                <li className="movieReleaseDate">
+                  {" "}
+                  {links ? "Release date: " + links.release_date : ""}
+                </li>
+              </ul>
             </div>
-            <div className="movie__releaseDate">
-              {links ? "Release date: " + links.release_date : ""}
-            </div>
-            <div className="movie__genres">
+            <div className="movieGenres">
               {links && links.genres
-                ? links.genres.map((genre) => (
+                ? links.genres.map((gen) => (
                     <>
-                      <span className="movie__genre" id={genre.id}>
-                        {genre.name}
+                      <span className="movieGenre" id={gen.id}>
+                        {gen.name}
                       </span>
                     </>
                   ))
                 : ""}
             </div>
           </div>
-          <div className="movie__detailRightBottom">
-            <div className="synopsisText">Synopsis</div>
-            <div>{links ? links.overview : ""}</div>
+          <div className="movieDetails">
+            <h3 className="synopsisTitle"> Overview </h3>
+                <p>{links ? links.overview : ""}</p>
+         
           </div>
         </div>
       </div>
-      {/* <div className="movie__heading">Production companies</div> */}
-      <div className="movie__production">
+      <div className="movieProductionCompanies">
+        <h3>Production companies</h3>{" "}
+      </div>
+      <div className="production">
         {links &&
           links.production_companies &&
           links.production_companies.map((company) => (
             <>
               {company.logo_path && (
-                <span className="productionCompanyImage">
+                <span className="CompanyLogoContainer">
                   <img
-                    className="movie__productionComapany"
+                    className="ComapanyLogos"
                     src={
                       "https://image.tmdb.org/t/p/original" + company.logo_path
                     }

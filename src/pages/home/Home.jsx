@@ -7,12 +7,11 @@ function Home() {
   return (
     <div>
       <Banner />
-
-      <SwitchTab />
-    
+        <SwitchTab />
 <br />
       <MovieTrending />
      <br />
+ 
       <TvShowTrending />
     </div>
   );

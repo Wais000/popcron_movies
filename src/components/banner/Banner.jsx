@@ -7,7 +7,8 @@ import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
-import {BsSearch} from 'react-icons/bs'
+import {BsSearch} from 'react-icons/bs';
+import SwitchTab from '../switchTab/SwitchTab'
 
 function Banner() {
   const [query, setQuery] = useState("");
@@ -71,8 +72,10 @@ function Banner() {
                 <div className="posterImage__description">
                   {movie ? movie.overview : ""}
                 </div> */}
+                  
               </div>
             </Link>
+            
           ))}
       </Carousel>
      <div className="wellcome">
@@ -93,7 +96,8 @@ function Banner() {
         />
  <button type="reset" class="del"></button>
       </form>{" "}
-      {/* <BsSearch class="fab fa-youtube"/> */}
+      <BsSearch class="fab fa-youtube"/>
+ 
       </div>
  
   );

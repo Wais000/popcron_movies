@@ -1,34 +1,36 @@
 @import'../globle/colors.scss';
 .tabBar {
+  z-index: 100;
   width: 89%;
-  // border: 2px solid red;
+  border: 2px solid red;
   margin: 0 auto;
   display: flex;
   justify-content: end;
   padding: 0;
-  .listsContainer {
+  .tabBarContainer {
     display: flex;
     width: 35%;
     // border: 2px solid red;
     justify-content: end;
-    .menueItems {
+    .menueButton {
       font-family: "Poppins", sans-serif;
       line-height: 1.5;
       text-decoration: none;
       border-radius: 0;
-    //   border: 2px solid red;
-      width: 33.3%;
+      background-color:$primary-colorTow;
+      // border: 2px solid rgb(106, 255, 0);
+      width: 35%;
       box-shadow: inset 0 0 0 0 #ffffff;
       color:white;
-      padding: 0 0.25rem;
+      padding: 8px 0.25rem;
       margin: 0 -0.25rem;
       transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
-    .menueItems:hover {
+    .menueButton:hover {
       box-shadow: inset 220px 0 0 0 $secondary-color;
       color: $primary-colorTow;
     }
-    .menueItems:focus{
+    .menueButton:focus{
         background-color:$secondary-color;
         color: $primary-colorTow ;
     }

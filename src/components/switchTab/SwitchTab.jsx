@@ -63,7 +63,7 @@ function SwitchTab() {
     dots: true,
     infinite: false,
     speed: 1000,
-    slidesToShow: 8,
+    slidesToShow: 5,
     slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
@@ -74,6 +74,22 @@ function SwitchTab() {
           slidesToScroll: 5,
           infinite: false,
           dots: true,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          initialSlide: 6,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          initialSlide: 2,
         },
       },
       {
@@ -98,12 +114,12 @@ function SwitchTab() {
     <div>
       <div className="tabBar">
         <ul
-          className="listsContainer"
+          className="tabBarContainer"
           // onChange={navigateToLists}
         >
           {/* <li menueItems onClick={navigateToLists} value="top-rated"> */}
           <button
-            className="menueItems"
+            className="menueButton"
             onClick={navigateToLists}
             variant="primary"
             value="top-rated"
@@ -111,7 +127,7 @@ function SwitchTab() {
             <a> top rated</a>
           </button>
           <button
-            className="menueItems"
+            className="menueButton"
             onClick={navigateToLists}
             variant="primary"
             value="upcomming"
@@ -119,7 +135,7 @@ function SwitchTab() {
             upcomming
           </button>
           <button
-            className="menueItems"
+            className="menueButton"
             onClick={navigateToLists}
             variant="primary"
             value="popular"
