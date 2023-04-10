@@ -3,7 +3,11 @@ import { getUrl } from '../../../components/features/movieSlice/movieSlice';
 import { fetchData } from '../../../components/globle/moviesApi';
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-import './TvDetails.scss'
+import './TvDetails.scss';
+import { AiFillLike } from "react-icons/ai";
+import { MdStarRate } from "react-icons/md";
+import { MdAccessTimeFilled } from "react-icons/md";
+import { RiMovie2Fill } from "react-icons/ri";
 
 function TvDetails() {
  // const [movieId, setMovieID]=useState("")
@@ -24,26 +28,61 @@ function TvDetails() {
  };
 
  return (
-   <div className="movie">
-   <div className="movie__intro">
-       <img className="movie__backdrop" src={`https://image.tmdb.org/t/p/original${links ? links.backdrop_path : ""}`} />
-   </div>
-   <div className="movie__detail">
-       <div className="movie__detailLeft">
-           <div className="movie__posterBox">
-               <img className="movie__poster" src={`https://image.tmdb.org/t/p/original${links ? links.poster_path : ""}`} />
+   <div className="movie"
+   style={{
+     backgroundImage: `linear-gradient(to bottom,  rgba(45, 68, 82, 0.711), rgb(22, 35, 43)), url(https://image.tmdb.org/t/p/original${
+       links ? links.backdrop_path : ""
+     })`,
+     width: "100%",
+     height: "auto",
+     backgroundPosition: "center",
+     backgroundtSize: "cover",
+   }}>
+
+   <div className="movieDetail">
+       <div className="BoxDetailLeft">
+           <div className="moviePosterBox">
+               <img className="moviePoster" src={`https://image.tmdb.org/t/p/original${links ? links.poster_path : ""}`} />
            </div>
        </div>
-       <div className="movie__detailRight">
-           <div className="movie__detailRightTop">
-               <div className="movie__name">{links ? links.original_title : ""}</div>
-               <div className="movie__tagline">{links ? links.tagline : ""}</div>
-               <div className="movie__rating">
-                   {links ? links.vote_average: ""} <i class="fas fa-star" />
-                   <span className="movie__voteCount">{links ? "(" + links.vote_count + ") votes" : ""}</span>
+       <div className="movieDetailRight">
+           <div className="movieDetailRightTop">
+               <div className="movieName">{links ? links.name : ""}</div>
+               <div className="movieShortMessage">{links ? links.tagline : ""}</div>
+               <div className="MovieShortInfo">
+
+
+               <ul className="shortDetails">
+                <li className="movieRating">
+                  <span>
+                    <MdStarRate />
+                  </span>
+                  <p> {links ? links.vote_average : ""}</p>
+                </li>
+                <li className="movieVoteCount">
+                  {" "}
+                  <span>
+                    <AiFillLike />
+                  </span>
+                  {links ? "(" + links.vote_count + ") votes" : ""}
+                </li>
+                <li className="movieRuntime">
+                  {" "}
+                  <span>
+                    <MdAccessTimeFilled />
+                  </span>{" "}
+                  {links ? links.runtime + " mins" : ""}
+                </li>
+                <li className="movieReleaseDate">
+                  {" "}
+                  <span>
+                    <RiMovie2Fill />
+                  </span>{" "}
+                  {links ? " " + links.release_date : ""}
+                </li>
+              </ul>
                </div>  
-               <div className="movie__runtime">{links ? links.runtime + " mins" : ""}</div>
-               <div className="movie__releaseDate">{links ? "Release date: " + links.release_date : ""}</div>
+               
                <div className="movie__genres">
                    {
                        links && links.genres
@@ -63,7 +102,7 @@ function TvDetails() {
            
        </div>
    </div>
-   <div className="movie__links">
+   {/* <div className="movie__links">
        <div className="movie__heading">Useful Links</div>
        {
            links && links.homepage && <a href={links.homepage} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__homeButton movie__Button">Homepage <i className="newTab fas fa-external-link-alt"></i></span></p></a>
@@ -71,19 +110,19 @@ function TvDetails() {
        {
            links && links.imdb_id && <a href={"https://www.imdb.com/title/" + links.imdb_id} target="_blank" style={{textDecoration: "none"}}><p><span className="movie__imdbButton movie__Button">IMDb<i className="newTab fas fa-external-link-alt"></i></span></p></a>
        }
-   </div>
-   <div className="movie__heading">Production companies</div>
-   <div className="movie__production">
+   </div> */}
+   <div className="movieProductionCompanies">  <h2>Production companies</h2></div>
+   <div className="production">
        {
            links && links.production_companies && links.production_companies.map(company => (
                <>
                    {
                        company.logo_path 
                        && 
-                       <span className="productionCompanyImage">
-                           <img className="movie__productionComapany" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
+                       <div className="CompanyLogoContainer">
+                           <img className="ComapanyLogos" src={"https://image.tmdb.org/t/p/original" + company.logo_path} />
                            <span>{company.name}</span>
-                       </span>
+                       </div>
                    }
                </>
            ))

@@ -9,19 +9,12 @@
   padding-top: 7%;
 }
 
-.movie__backdrop {
-  width: 100%;
-  // height: auto;
-  // object-fit:cover;
-  object-position: 0 35%;
-  border: 2px solid red;
-}
 
 .movieDetail {
   align-items: center;
   width: 80%;
   display: flex;
-  height: auto;
+//   height: auto;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 4% 0%;
@@ -32,13 +25,18 @@
 
 
 .moviePoster {
-  width: 300px;
+  width: 350px;
   border-radius: 10px;
-//   box-shadow: rgba(0, 0, 0, 0.86) 0px 10px 10px 3px;
+  box-shadow: rgba(0, 0, 0, 0.86) 0px 10px 10px 3px;
 //   border: 2px solid yellowgreen;
 }
 .BoxDetailLeft {
-    // margin-right: 30px;
+    margin-right: 30px;
+    width: 40%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex: 1 1 50px;
     aspect-ratio: 1 / 1;
   }
