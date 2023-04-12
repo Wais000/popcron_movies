@@ -40,6 +40,7 @@ const qeuryHandler=(e)=>{
   return (
     <header>
       <div className="headerLists">
+    
         <Link className="logo" to="/">
           <img
             src={logo}
@@ -83,6 +84,7 @@ const qeuryHandler=(e)=>{
           />
         </div>
       </div>
+     
     </header>
   );
 };

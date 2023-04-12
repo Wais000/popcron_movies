@@ -7,22 +7,23 @@ header {
   width: 100%;
   position: fixed;
   z-index: 100;
+  background-color: rgba(22, 35, 43, 0.821);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(4px);
+  // box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   .headerLists {
     font-size:16px;
     text-transform: capitalize;
     height: 8vh;
-    width: 100%;
+    width: 90%;
     top: 0;
     right: 0;
     padding: 4px 5px 4px 35px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(22, 35, 43, 0.821);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(4px);
-    // box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  margin: auto;
     .logo {
       height: 100%;
       display: flex;
@@ -57,6 +58,7 @@ header {
     -webkit-backdrop-filter: blur(4px);
   }
 }
+.headerBox{width: 90%;}
 
 .nav-items {
   color: white;
