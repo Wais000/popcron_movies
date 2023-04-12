@@ -6,7 +6,7 @@ import { fetchData } from "../globle/moviesApi";
 import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {BsSearch} from 'react-icons/bs';
+
 
 
 function Banner() {
@@ -85,7 +85,7 @@ function Banner() {
         />
  <button type="reset" class="del"></button>
       </form>{" "} */}
-      <BsSearch class="fab fa-youtube"/>
+
  
       </div>
  

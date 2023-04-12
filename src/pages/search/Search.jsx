@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { fetchData } from "../../components/globle/moviesApi";
 import { useParams } from "react-router-dom";
-import { BsStarFill } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
+import { RiMovie2Fill } from "react-icons/ri";
 import { getSearchRersult } from "../../components/features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -41,19 +42,25 @@ function Search() {
                     }`}
                   />
                 </div>
-                <div className="searchCardBottom">
-                  <div className="searchCardInfo">
-                    <div className="searchRateRelease">
-                      <div className="rate">
-                      <BsStarFill /> 
+                <div className="cardBottomSwitch">
+                  <div className="cardInfoSwitch">
+                    <div className="rateReleaseSwitch">
+                      <div className="rateSwitch">
+                      <p className="iconOne">
+                               
+                               <AiFillStar />
+                             </p>
                        <p>{searchResults ? searchResults.vote_average.toFixed(1): ""}</p> 
                       </div>
-                      <div className="release">
-                        {searchResults ? searchResults.release_date.substr(0,4) : ""}
+                      <div className="releaseSwitch">
+                      <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                       <p>{searchResults ? searchResults.release_date.substr(0,4) : ""}</p> 
                         {/* {searchResults ? searchResults.vote_average.substr(0,4): ""} */}
                       </div>
                     </div>
-                    <p> {searchResults ? searchResults.title : ""} </p>
+                    <p> {searchResults ? searchResults.title.substr(0,19) : ""} </p>
                   </div>
                 </div>{" "}
               </div>
