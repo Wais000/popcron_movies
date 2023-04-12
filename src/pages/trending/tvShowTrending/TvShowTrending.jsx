@@ -25,20 +25,29 @@ function TvShowTrending() {
   };
   console.log("i am the type of TvShowTrending", TvShowTrending);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 6,
+    slidesToShow: 7,
     slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1300,
+        breakpoint: 2000,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 7,
           slidesToScroll: 6,
           infinite: false,
-          dots: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          // infinite: false,
+          // dots: true,
         },
       },
       {

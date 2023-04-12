@@ -60,26 +60,44 @@ function SwitchTab() {
   }, [upDispatch, popDispatch, topDispatch]);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 1000,
-    slidesToShow: 5,
+    slidesToShow: 7,
     slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 2000,
+        settings: {
+          slidesToShow: 7,
+          slidesToScroll: 6,
+          infinite: false,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1300,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 5,
-          infinite: false,
-          dots: true,
+          // infinite: false,
+          // dots: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          // infinite: false,
+          // dots: true,
         },
       },
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 6,
           initialSlide: 6,
         },

@@ -3,11 +3,12 @@ import Banner from "../../components/banner/Banner.jsx";
 import SwitchTab from "../../components/switchTab/SwitchTab.jsx";
 import MovieTrending from "../trending/movieTrending/MovieTrending.jsx";
 import TvShowTrending from "../trending/tvShowTrending/TvShowTrending.jsx";
+import './Home.scss';
 function Home() {
   return (
-    <div>
-      <Banner />
-        <SwitchTab />
+    <div className="HomeMainContainer">
+ <Banner />  
+  <div className="switchTab"><SwitchTab/></div> 
 <br />
       <MovieTrending />
      <br />

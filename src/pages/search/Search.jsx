@@ -11,7 +11,7 @@ function Search() {
   const dispatch = useDispatch();
   const { searchRersult } = useSelector((state) => state.movies);
 
-  const { query } = useParams();
+  const {query} = useParams();
 
   const searchResults = () => {
     fetchData(`/search/movie?query=${query}`).then((Response) => {

@@ -121,7 +121,7 @@ function MovieDetails() {
                       "https://image.tmdb.org/t/p/original" + company.logo_path
                     }
                   />
-                  <span>{company.name}</span>
+                  {/* <span>{company.name}</span> */}
                 </div>
               )}
             </>

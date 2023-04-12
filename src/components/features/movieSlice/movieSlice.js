@@ -11,7 +11,7 @@ export const moviesSlice = createSlice({
     TvShowTrending: {},
     categories: {},
     searchRersult: {},
-    genres: {},
+    
   },
   reducers: {
     getUrl: (state, action) => {

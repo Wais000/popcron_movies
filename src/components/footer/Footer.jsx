@@ -12,6 +12,8 @@ import './Footer.scss'
 function Footer() {
   return (
 <footer class="footer-distributed">
+<div className="footerContainer">
+
 
 <div class="footer-left">
 
@@ -25,38 +27,45 @@ function Footer() {
           />
         </Link>
 
-  <p class="footer-links">
-    <a href="#" class="link-1">Home</a>
-    
-    <a href="#">Blog</a>
   
-    <a href="#">Pricing</a>
-  
-    <a href="#">About</a>
-    
-    <a href="#">Faq</a>
-    
-    <a href="#">Contact</a>
-  </p>
+  <p>Popcorn © 2023</p>
 
-  <p class="footer-company-name">Company Name © 2015</p>
+
+ 
 </div>
 
 <div class="footer-center">
-
-  <div>
-    <HiLocationMarker/>
-    <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+<p class="footer-company-about">
+    <span>Contact us</span>
+  </p>
+  <div style={{
+      display:'flex', alignItems:'center'
+    }}>
+    <HiLocationMarker style={{
+      marginRight:'8px', color:'#ffff', fontSize:'15px'
+    }}/>
+    <p><span style={{color:'#92999f'}}>unkown street, noLand</span></p>
   </div>
 
-  <div>
-    <HiPhoneMissedCall/>
-    <p>+1.555.555.5555</p>
+  <div style={{
+      display:'flex', alignItems:'center'
+    }} >
+    <HiPhoneMissedCall style={{
+      marginRight:'8px', color:'#ffff', fontSize:'15px'
+    }}/>
+    <p style={{color:'#92999f'}}>
+
+      +00 0000 00 00
+    </p>
   </div>
 
-  <div>
-  <BsFillEnvelopeFill/>
-    <p><a href="mailto:support@company.com">support@company.com</a></p>
+  <div style={{
+      display:'flex', alignItems:'center'
+    }}>
+  <BsFillEnvelopeFill style={{
+      marginRight:'8px', color:'#ffff', fontSize:'15px'
+    }}/>
+    <p><a href="#" style={{color:'#92999f'}}>support@popcorn.com</a></p>
   </div>
 
 </div>
@@ -78,7 +87,7 @@ function Footer() {
   </div>
 
 </div>
-
+</div>
 </footer>
 
 

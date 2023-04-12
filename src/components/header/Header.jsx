@@ -1,93 +1,41 @@
-import React, { useState, useRef, useEffect } from "react";
-import { HiOutlineSearch } from "react-icons/hi";
-import { SlMenu } from "react-icons/sl";
-import { VscChromeClose } from "react-icons/vsc";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import { BsSearch } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../globle/moviesApi";
 import { getGenres } from "../features/movieSlice/movieSlice";
-
 import logo from "../pictures/logo.svg";
+import { GoSearch } from "react-icons/go";
+
 const Header = () => {
-
-  const [list, setList]=useState("")
-
-// const moveToContainer = useRef()
-const navigateToLists=(e)=>{
-  setList(e.target.value);
-
-  // moveToContainer.current.scrollIntoView({behavior: "smooth"});
-}
+  const [list, setList] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  // const [show, setShow] = useState("top");
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
-
-  const [showSearch, setShowSearch] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const [category, setCategiry]= useState(false)
-  const showHandler =()=>{
-    setCategiry(true)
-  }
+  // const location = useLocation();
+  // const [toggle, setToggle] = useState(false);
 
-  useEffect(() => {
-
-
-
-    window.scrollTo(0, 0);
-  }, [location]);
-
-  const dispatch = useDispatch();
-  const { genres } = useSelector((state) => state.movies);
-  useEffect(() => {
-    MoviesApi();
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  const navigateToLists = (e) => {
+    setList(e.target.value);
+  };
+  // const { genres } = useSelector((state) => state.movies);
+  // useEffect(() => {
+  //   MoviesApi();
+  // }, [dispatch]);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
-      navigate(`/search/${query}`);
-      setTimeout(() => {
-        setShowSearch(false);
-      }, 1000);
+        navigate(`/search/${query}`);
+     
     }
-  };
+};
+const qeuryHandler=(e)=>{
+  setQuery(e.target.value)
 
-  const openSearch = () => {
-    setMobileMenu(false);
-    setShowSearch(true);
-  };
-
-  const openMobileMenu = () => {
-    setMobileMenu(true);
-    setShowSearch(false);
-  };
-
-  const myDispatch = useDispatch();
-  // const { genres } = useSelector((state) => state.movies);
-  useEffect(() => {
-    MoviesApi();
-  }, [myDispatch]);
-
-  const MoviesApi = () => {
-    fetchData("/genre/movie/list").then((Response) => {
-      console.log("I am the response of gener", Response);
-      dispatch(getGenres(Response));
-    });
-  };
-  console.log("i am the type of geners", typeof genres);
-
-  const [toggle, setToggle] = useState(false)
-  const togelHandler=()=>{
-    setToggle(!toggle)
-    setTimeout(() => {
-      setToggle(false);
-  }, 10000);
-  }
+ 
+}
 
   return (
     <header>
@@ -102,38 +50,39 @@ const navigateToLists=(e)=>{
           />
         </Link>
         <ul className={`nav-items ${isOpen && "open"}`}>
-          <li menuItem onClick={navigateToLists} id="movie" variant="primary" key="movie">Movies</li>
-          <li menuItem onClick={navigateToLists} id="tvShows" variant="primary" key="tvShows">TV Shows</li>
-          <li menuItem onClick={togelHandler} >categories</li>
-          
+          <li
+            menuItem
+            onClick={navigateToLists}
+            id="movie"
+            variant="primary"
+            key="movie"
+          >
+            Movies
+          </li>
+          <li
+            menuItem
+            onClick={navigateToLists}
+            id="tvShows"
+            variant="primary"
+            key="tvShows"
+          >
+            TV Shows
+          </li>
         </ul>
-        <div
-          className={`nav-toggle ${isOpen && "open"}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <div className="bars2" onClick={openSearch}>
-            {" "}
-            <BsSearch />{" "}
-          </div>
-          <div className="bar1" onClick={openMobileMenu}></div>
-
-          <div className="searchInput">
-            <input type="text" placeholder="search..." />
-          </div>
+        <div class="search-box">
+          <button type="reset" class="btn-search">
+            <GoSearch />
+          </button>
+          <input
+            type="text"
+            className="input-search"
+            required="required"
+            placeholder="Type the name.."
+            onChange={qeuryHandler}
+            onKeyUp={searchQueryHandler}
+          />
         </div>
-
       </div>
-              {/* header list */}
-
-{toggle && (<div className="categories">
-          {genres.genres &&
-            genres.genres.map((genre) => (
-           
-                <p className="genersName" >{genre.name}</p>
-
-            ))}
-        </div>) 
-              }
     </header>
   );
 };

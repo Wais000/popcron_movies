@@ -19,6 +19,11 @@ section {
     font: bold 16px sans-serif;
     padding: 55px 50px;
     border-top: 3px solid $primary-color ;
+    margin-top: 2%;
+  }
+  .footerContainer{
+    width: 90%;
+    margin: auto;
   }
   
   .footer-distributed .footer-left,
@@ -29,7 +34,9 @@ section {
   }
   
   /* Footer left */
-  
+  .footer-left p{
+    color: white;
+  }
   .footer-distributed .footer-left{
     width: 40%;
   }

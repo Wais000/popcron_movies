@@ -6,16 +6,10 @@ import { fetchData } from "../globle/moviesApi";
 import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
 import {BsSearch} from 'react-icons/bs';
-import SwitchTab from '../switchTab/SwitchTab'
+
 
 function Banner() {
-  const [query, setQuery] = useState("");
-  const [showSearch, setShowSearch] = useState("");
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [mobileMenu, setMobileMenu] = useState(false);
 
   const dispatch = useDispatch();
   const { popular } = useSelector((state) => state.movies);
@@ -30,18 +24,13 @@ function Banner() {
     });
   };
 
-  const searchQueryHandler = (event) => {
-    if (event.key === "Enter" && query.length > 0) {
-      navigate(`/search/${query}`);
-    }
-  };
 
   return (
     <div className="poster">
       <Carousel
         showThumbs={false}
         autoPlay={true}
-        transitionTime={2}
+        transitionTime={3}
         infiniteLoop={true}
         showStatus={false}
       >
@@ -59,7 +48,7 @@ function Banner() {
                 />
               </div>
               <div className="posterImage__overlay">
-                {/* <div className="posterImage__title">
+                <div className="posterImage__title">
                   {movie ? movie.original_title : ""}
                 </div>
                 <div className="posterImage__runtime">
@@ -71,19 +60,19 @@ function Banner() {
                 </div>
                 <div className="posterImage__description">
                   {movie ? movie.overview : ""}
-                </div> */}
+                </div>
                   
               </div>
             </Link>
             
           ))}
       </Carousel>
-     <div className="wellcome">
+     {/* <div className="wellcome">
       <span className="wellcomPop">Welcome to Popcron</span>
       <br/>
       <span className="subSentence">where you'll find all the latest infos about your favorite films and Tv shows !</span>
-     </div>
-      <form className="inputbox">
+     </div> */}
+      {/* <form className="inputbox">
         <input
         required="required"
           type="text"
@@ -95,7 +84,7 @@ function Banner() {
           onKeyUp={searchQueryHandler}
         />
  <button type="reset" class="del"></button>
-      </form>{" "}
+      </form>{" "} */}
       <BsSearch class="fab fa-youtube"/>
  
       </div>

@@ -42,8 +42,6 @@ function App() {
           <Route path="/search/:id" element={<MovieDetails />} />
           <Route path="/TvShowTrending/:id" element={<TvDetails />} />
           <Route path="/MovieTrending/:id" element={<MovieDetails />} />
-          {/* <Route path="/TvShowTrending/:id" element={<MovieDetails />} /> */}
-          {/* <Route path="/mediaType/:id" element={<Explore />} /> */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer/>
