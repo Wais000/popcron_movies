@@ -46,4 +46,75 @@
 .upcommingContainer {
   width: 90%;
   margin: 2% auto;
+  // border: 2px solid yellow;
+}
+.rate .icons{
+  border: 2px solid orange;
+  margin-bottom: 1px;
+}
+
+.cardBottomSwitch{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background:$primary-colorTow;
+  padding: 6% 5% 5% 5%;
+  height: 100px;
+}
+// .rateReleaseSwitch{
+//   width: 100%;
+//   display: flex;
+// }
+// .rateSwitch{
+//   border: 1px solid rgb(0, 247, 255);
+//   display: flex;
+//   padding-right: 3%;
+// }
+.cardInfoSwitch{
+  color: white;
+ width: 90%;
+//  border: 1px solid green;
+  .rateReleaseSwitch{
+      width: 100%;
+      display: flex;  
+   justify-content: space-evenly;
+  margin-bottom: 5%;
+  // border: 1px solid lightpink;
+  .rateSwitch{
+      display: flex;
+      justify-content: flex-start;
+
+      width:50%;
+      align-items: center;
+      .iconOne{
+        margin-right: 10%;
+        color:$secondary-color ;
+        font-size: 18px;
+      }
+     }
+  }
+  .releaseSwitch{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    // border: 1px solid lightgreen;
+    width:50%;
+    align-items: center;
+    .iconTow{
+      margin-right: 10%;
+      color:$secondary-color ;
+      font-size: 18px;
+    }
+  }
+
+  
+}
+
+
+.cardBottomSwitch{
+    // border: 2px solid rgb(255, 247, 0);
+    width: 95%;
+    padding: 3%;
 }

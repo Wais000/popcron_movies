@@ -4,6 +4,8 @@ import { fetchData } from "../../../components/globle/moviesApi";
 import { getMovieTrending } from "../../../components/features/movieSlice/movieSlice";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
 import { BsStarFill } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
+import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import './MovieTrending.scss';
 import Slider from "react-slick";
@@ -112,18 +114,24 @@ function MovieTrending() {
                 </div>
               
 
-              <div className="cardBottom">
-                <div className="cardInfo">
-                  <div className="rateRelease">
-                    <div className="rate">
-                      <BsStarFill />{" "}
+              <div className="cardBottomSwitch">
+                <div className="cardInfoSwitch">
+                  <div className="rateReleaseSwitch">
+                    <div className="rateSwitch">
+                    <p className="iconOne">
+                               
+                                <AiFillStar />
+                              </p>
                       <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
                     </div>
-                    <div className="release">
+                    <div className="releaseSwitch">
+                    <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
                       <p> {movieTrend ? movieTrend.release_date.substr(0,4) : ""}</p>
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.original_title.substr(0,24) : ""}</p>
+                  <p>{movieTrend ? movieTrend.original_title.substr(0,19) : ""}</p>
                 </div>
                 </div>
               </div>

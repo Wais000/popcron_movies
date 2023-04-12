@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./SwitchTab.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { BsStarFill } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
+import { RiMovie2Fill } from "react-icons/ri";
 import Slider from "react-slick";
 import { fetchData } from "../globle/moviesApi";
 import { Link } from "react-router-dom";
@@ -29,8 +30,6 @@ function SwitchTab() {
   const { popular } = useSelector((state) => state.movies);
   const { topRated } = useSelector((state) => state.movies);
   const { upcoming } = useSelector((state) => state.movies);
-
-
 
   const popHandler = () => {
     fetchData("/movie/popular").then((setPopularMT) => (Response) => {
@@ -172,17 +171,15 @@ function SwitchTab() {
       </div>
 
       {value === "top-rated" ? (
-       
         <div className="topRateContainer">
-           <h2>Top Rated Movies</h2>
+          <h2>Top Rated Movies</h2>
           {/* <h2>top rated Movies</h2> */}
-       
+
           <Slider {...settings}>
             {topRated.results &&
               topRated.results.map((rate) => (
                 <Link to={`/SwitchTab/${rate.id}`}>
-                <div className="caroselBox" key={rate.id}>
-             
+                  <div className="caroselBox" key={rate.id}>
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -192,28 +189,35 @@ function SwitchTab() {
                         />
                       </div>
 
-                      <div className="cardBottom">
-                        <div className="cardInfo">
-                          <div className="rateRelease">
-                            <div className="rate">
-                              <BsStarFill />{" "}
+                      <div className="cardBottomSwitch">
+                        <div className="cardInfoSwitch">
+                          <div className="rateReleaseSwitch">
+                            <div className="rateSwitch">
+                              <p className="iconOne">
+                                {" "}
+                                <AiFillStar />
+                              </p>
                               <p> {rate ? rate.vote_average : ""}</p>
                             </div>
-                            <div className="release">
-                              <p> {rate ? rate.release_date : ""}</p>
+                            <div className="releaseSwitch">
+                              <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                              <p>
+                                {" "}
+                                {rate ? rate.release_date.substr(0, 4) : ""}
+                              </p>
                             </div>
                           </div>
-                          <p>{rate ? rate.original_title : ""}</p>
+                          <p>{rate ? rate.title.substr(0, 19) : ""}</p>
                         </div>
                       </div>
                     </div>
-                
-                </div>
-                </Link>   ))}
+                  </div>
+                </Link>
+              ))}
           </Slider>
-            
         </div>
-     
       ) : value === "upcomming" ? (
         <div className="upcommingContainer">
           <h2>Upcomming Movies</h2>
@@ -221,8 +225,7 @@ function SwitchTab() {
             {upcoming.results &&
               upcoming.results.map((comming) => (
                 <Link to={`/SwitchTab/${comming.id}`}>
-                <div className="caroselBox" key={comming.id}>
-             
+                  <div className="caroselBox" key={comming.id}>
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -232,35 +235,46 @@ function SwitchTab() {
                         />
                       </div>
 
-                      <div className="cardBottom">
-                        <div className="cardInfo">
-                          <div className="rateRelease">
-                            <div className="rate">
-                              <BsStarFill />{" "}
+                      <div className="cardBottomSwitch">
+                        <div className="cardInfoSwitch">
+                          <div className="rateReleaseSwitch">
+                            <div className="rateSwitch">
+                              <p className="iconOne">
+                                {" "}
+                                <AiFillStar />
+                              </p>
                               <p> {comming ? comming.vote_average : ""}</p>
                             </div>
-                            <div className="release">
-                              <p> {comming ? comming.release_date : ""}</p>
+                            <div className="releaseSwitch">
+                              <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+
+                              <p>
+                                {" "}
+                                {comming
+                                  ? comming.release_date.substr(0, 4)
+                                  : ""}
+                              </p>
                             </div>
                           </div>
-                          <p>{comming ? comming.original_title : ""}</p>
+                          <p>{comming ? comming.title.substr(0, 19) : ""}</p>
                         </div>
                       </div>
                     </div>
-                  
-                </div>
-          </Link>    ))}
+                  </div>
+                </Link>
+              ))}
           </Slider>
         </div>
       ) : value === "popular" ? (
         <div className="popularContainer">
-           <h2>Popular Movies</h2>
-        <Slider {...settings}>
+          <h2>Popular Movies</h2>
+          <Slider {...settings}>
             {popular.results &&
               popular.results.map((pop) => (
                 <Link to={`/SwitchTab/${pop.id}`}>
-                <div className="caroselBox" key={pop.id}>
-                  
+                  <div className="caroselBox" key={pop.id}>
                     <div className="cardInner">
                       <div className="cardTop">
                         <img
@@ -270,29 +284,35 @@ function SwitchTab() {
                         />
                       </div>
 
-                      <div className="cardBottom">
-                        <div className="cardInfo">
-                          <div className="rateRelease">
-                            <div className="rate">
-                              <BsStarFill />{" "}
+                      <div className="cardBottomSwitch">
+                        <div className="cardInfoSwitch">
+                          <div className="rateReleaseSwitch">
+                            <div className="rateSwitch">
+                              <p className="iconOne">
+                                {" "}
+                                <AiFillStar />
+                              </p>
                               <p> {pop ? pop.vote_average : ""}</p>
                             </div>
-                            <div className="release">
-                              <p> {pop ? pop.release_date : ""}</p>
+                            <div className="releaseSwitch">
+                              <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                              <p> {pop ? pop.release_date.substr(0, 4) : ""}</p>
                             </div>
                           </div>
-                          <p>{pop ? pop.original_title : ""}</p>
+                          <p>{pop ? pop.title.substr(0, 19) : ""}</p>
                         </div>
                       </div>
                     </div>
-                  
-                </div>
-          </Link>    ))}
+                  </div>
+                </Link>
+              ))}
           </Slider>
         </div>
-      ) : 
+      ) : (
         value == null
-     }
+      )}
     </div>
   );
 }
