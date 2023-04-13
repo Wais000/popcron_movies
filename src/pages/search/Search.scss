@@ -39,7 +39,7 @@ margin-top: 2%;
       }
      
     }
-    .searchCardBottom{
+    .cardBottomSearch{
         width:95%;
         display: flex;
         flex-direction: row;
@@ -49,15 +49,15 @@ margin-top: 2%;
         padding: 0% 5% 5% 5%;
         height: 100px;
         margin-bottom: 1% ;
-        .searchCardInfo{
+        .cardInfoSearch{
             color: white;
             width: 100%;
-            .searchRateRelease{
+            .rateReleaseSearch{
               width: 100%;
               display: flex;  
            justify-content: space-between;
           margin-bottom: 5%;
-           .rate{
+           .rateSearch{
             display: flex;
             justify-content: space-between;
             // border: 1px solid green;

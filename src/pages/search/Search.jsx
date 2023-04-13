@@ -8,14 +8,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Search.scss";
 
+
 function Search() {
   const dispatch = useDispatch();
   const { searchRersult } = useSelector((state) => state.movies);
 
-  const {query} = useParams();
+  const { query } = useParams();
 
   const searchResults = () => {
-    fetchData(`/search/movie?query=${query}`).then((Response) => {
+    fetchData(`/search/multi?query=${query}`).then((Response) => {
       dispatch(getSearchRersult(Response));
     });
     console.log("I am search query result", searchRersult);
@@ -25,14 +26,20 @@ function Search() {
     searchResults();
   }, [query]);
 
+  // const releaseTV = results.map((newItem) => {
+  //   const oldItem = newItem.first_air_date.substr(0, 4);
+  //   return oldItem;
+  // });
+
+
   return (
     <div className="searchMainContainer">
       {searchRersult.results &&
         searchRersult.results.map((searchResults) => (
           <div className="searchCaroselBox" key={searchResults.id}>
             <Link
-           style={{ textDecoration: "none", color: "white" }}
-          to={`/search/${searchResults.id}`}
+              style={{ textDecoration: "none", color: "white" }}
+              to={searchResults.media_type === 'movie' ? `/search/movie/${searchResults.id}` : `/search/tv/${searchResults.id}`}
             >
               <div className="searchCardInner">
                 <div className="searchCardTop">
@@ -42,25 +49,37 @@ function Search() {
                     }`}
                   />
                 </div>
-                <div className="cardBottomSwitch">
-                  <div className="cardInfoSwitch">
-                    <div className="rateReleaseSwitch">
-                      <div className="rateSwitch">
-                      <p className="iconOne">
-                               
-                               <AiFillStar />
-                             </p>
-                       <p>{searchResults ? searchResults.vote_average.toFixed(1): ""}</p> 
+                <div className="cardBottomSearch">
+                  <div className="cardInfoSearch">
+                    <div className="rateReleaseSearch">
+                      <div className="rateSearch">
+                        <p className="iconOne">
+                          <AiFillStar />
+                        </p>
+                        <p>
+                          {searchResults
+                            ? searchResults.vote_average 
+                            : ""}
+                        </p>
                       </div>
-                      <div className="releaseSwitch">
-                      <p className="iconTow">
-                                <RiMovie2Fill />
-                              </p>
-                       <p>{searchResults ? searchResults.release_date.substr(0,4) : ""}</p> 
-                        {/* {searchResults ? searchResults.vote_average.substr(0,4): ""} */}
+                      <h4>{searchResults ? searchResults.media_type : ""}</h4>
+                      <div className="releaseSearch">
+                        <p className="iconTow">
+                          <RiMovie2Fill />
+                        </p>
+                       
+                        <p> {searchResults ? searchResults.release_date :""}</p>
+
+                     
                       </div>
                     </div>
-                    <p> {searchResults ? searchResults.title.substr(0,19) : ""} </p>
+                    <p>
+                      {" "}
+                      {searchResults
+                        ? searchResults.title ||
+                          searchResults.name
+                        : ""}{" "}
+                    </p>
                   </div>
                 </div>{" "}
               </div>

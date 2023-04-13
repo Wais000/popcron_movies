@@ -1,16 +1,15 @@
-import React, { useState} from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchData } from "../globle/moviesApi";
-import { getGenres } from "../features/movieSlice/movieSlice";
+// import { useSelector, useDispatch } from "react-redux";
+// import { fetchData } from "../globle/moviesApi";
+// import { getGenres } from "../features/movieSlice/movieSlice";
 import logo from "../pictures/logo.svg";
 import { GoSearch } from "react-icons/go";
 
 const Header = () => {
   const [list, setList] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   // const location = useLocation();
@@ -27,20 +26,20 @@ const Header = () => {
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
-        navigate(`/search/${query}`);
+      navigate(`/search/multi/${query}`);
      
     }
-};
-const qeuryHandler=(e)=>{
-  setQuery(e.target.value)
+    
+  };
+  const qeuryHandler = (e) => {
+    setQuery(e.target.value);
+   
 
- 
-}
+  };
 
   return (
     <header>
       <div className="headerLists">
-    
         <Link className="logo" to="/">
           <img
             src={logo}
@@ -50,7 +49,7 @@ const qeuryHandler=(e)=>{
             // viewBox="2 2 5 6"
           />
         </Link>
-        <ul className={`nav-items ${isOpen && "open"}`}>
+        <ul className="nav-items">
           <li
             menuItem
             onClick={navigateToLists}
@@ -80,11 +79,10 @@ const qeuryHandler=(e)=>{
             required="required"
             placeholder="Type the name.."
             onChange={qeuryHandler}
-            onKeyUp={searchQueryHandler}
+            onKeyDown={searchQueryHandler}
           />
         </div>
       </div>
-     
     </header>
   );
 };

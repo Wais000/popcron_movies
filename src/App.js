@@ -36,9 +36,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Banner/:id" element={<MovieDetails />} />
-          <Route path="/search/:query" element={<Search />} />
+          <Route path="/search/multi/:query" element={<Search />} />
           <Route path="/search/:id" element={<SearchDetails />} />
           <Route path="/SwitchTab/:id" element={<MovieDetails />} />
+          <Route path="/search/movie/:id" element={<MovieDetails />} />
+          <Route path="/search/tv/:id" element={<TvDetails />} />
           <Route path="/search/:id" element={<MovieDetails />} />
           <Route path="/TvShowTrending/:id" element={<TvDetails />} />
           <Route path="/MovieTrending/:id" element={<MovieDetails />} />
