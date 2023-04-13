@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 function TvShowTrending() {
   // const [endpoint, setEndpoint] = useState("movie");
     const Dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(true);
   const { TvShowTrending } = useSelector((state) => state.movies);
   useEffect(() => {
     tvShowTrending();
@@ -24,11 +25,12 @@ function TvShowTrending() {
     fetchData("/trending/tv/week").then((Response) => {
       Dispatch(getTvShowTrending(Response));
     });
+    setIsLoading(false);
   };
-  console.log("i am the type of TvShowTrending", TvShowTrending);
+  // console.log("i am the type of TvShowTrending", TvShowTrending);
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 1000,
     slidesToShow: 7,
     slidesToScroll: 4,
@@ -96,7 +98,11 @@ function TvShowTrending() {
   };
   return (
     <div className="mainContainer">
+     
       <h1>Tv Shows list</h1>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
     <Slider {...settings}>
       {TvShowTrending.results &&
         TvShowTrending.results.map((movieTrend) => (
@@ -143,6 +149,7 @@ function TvShowTrending() {
         
         ))}
     </Slider>
+    )}
       </div>
    
   );

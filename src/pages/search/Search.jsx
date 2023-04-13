@@ -12,14 +12,15 @@ import "./Search.scss";
 function Search() {
   const dispatch = useDispatch();
   const { searchRersult } = useSelector((state) => state.movies);
-
+  const [isLoading, setIsLoading] = useState(true);
   const { query } = useParams();
 
   const searchResults = () => {
     fetchData(`/search/multi?query=${query}`).then((Response) => {
       dispatch(getSearchRersult(Response));
+      setIsLoading(false);
     });
-    console.log("I am search query result", searchRersult);
+    // console.log("I am search query result", searchRersult);
   };
 
   useEffect(() => {
@@ -34,7 +35,10 @@ function Search() {
 
   return (
     <div className="searchMainContainer">
-      {searchRersult.results &&
+      {isLoading ? (
+        <h2>Popcorn...</h2>
+      ) : (<>
+            {searchRersult.results &&
         searchRersult.results.map((searchResults) => (
           <div className="searchCaroselBox" key={searchResults.id}>
             <Link
@@ -85,8 +89,9 @@ function Search() {
               </div>
             </Link>
           </div>
-        ))}
-    </div>
+        ))}</> )}
+
+         </div>
   );
 }
 

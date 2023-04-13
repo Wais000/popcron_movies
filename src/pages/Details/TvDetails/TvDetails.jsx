@@ -12,6 +12,8 @@ import { RiMovie2Fill } from "react-icons/ri";
 function TvDetails() {
  // const [movieId, setMovieID]=useState("")
  const dispatch = useDispatch();
+ const [isLoading, setIsLoading] = useState(true);
+
  const {id } = useParams()
 
  useEffect(() => {
@@ -24,10 +26,14 @@ function TvDetails() {
    fetchData(`/tv/${id}`).then((Response) => {
      console.log("I am the response details", Response);
      dispatch(getUrl(Response));
+     setIsLoading(false);
    });
  };
 
  return (
+    <>{isLoading ? (
+        <h2>Popcorn...</h2>
+      ) : (
    <div className="movie"
    style={{
      backgroundImage: `linear-gradient(to bottom,  rgba(45, 68, 82, 0.711), rgb(22, 35, 43)), url(https://image.tmdb.org/t/p/original${
@@ -129,6 +135,7 @@ function TvDetails() {
        }
    </div>
 </div>
+)}</>
 )
  
 }

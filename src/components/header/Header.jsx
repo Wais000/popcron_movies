@@ -2,9 +2,6 @@ import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-// import { useSelector, useDispatch } from "react-redux";
-// import { fetchData } from "../globle/moviesApi";
-// import { getGenres } from "../features/movieSlice/movieSlice";
 import logo from "../pictures/logo.svg";
 import { GoSearch } from "react-icons/go";
 
@@ -12,17 +9,9 @@ const Header = () => {
   const [list, setList] = useState("");
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const [toggle, setToggle] = useState(false);
-
-  // const dispatch = useDispatch();
   const navigateToLists = (e) => {
     setList(e.target.value);
   };
-  // const { genres } = useSelector((state) => state.movies);
-  // useEffect(() => {
-  //   MoviesApi();
-  // }, [dispatch]);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
