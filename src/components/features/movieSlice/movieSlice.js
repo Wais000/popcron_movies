@@ -9,6 +9,7 @@ export const moviesSlice = createSlice({
     upcoming: {},
     MovieTrending: {},
     TvShowTrending: {},
+    seasonsDetail: {},
     categories: {},
     searchRersult: {},
     
@@ -35,6 +36,9 @@ export const moviesSlice = createSlice({
     getTvShowTrending: (state, action) => {
       state.TvShowTrending = action.payload;
     },
+    getSeasonsDetail: (state, action) => {
+      state.seasonsDetail = action.payload;
+    },
     getGenres: (state, action) => {
       state.genres = action.payload;
     },
@@ -55,6 +59,7 @@ export const {
   getTvShowTrending,
   getGenres,
   getSearchRersult,
+  getSeasonsDetail,
 } = moviesSlice.actions;
 
 export default moviesSlice.reducer;

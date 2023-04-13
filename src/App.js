@@ -13,6 +13,7 @@ import Footer from "./components/footer/Footer";
 import TvDetails from "./pages/Details/TvDetails/TvDetails";
 import SearchDetails from "./pages/Details/searchDetails/SearchDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SeasonDetails from "./pages/Details/searchDetails/SearchDetails";
 
 function App() {
   
@@ -43,6 +44,7 @@ function App() {
           <Route path="/search/tv/:id" element={<TvDetails />} />
           <Route path="/search/:id" element={<MovieDetails />} />
           <Route path="/TvShowTrending/:id" element={<TvDetails />} />
+          <Route path="/seasonDetail/:id" element={<SeasonDetails />} />
           <Route path="/MovieTrending/:id" element={<MovieDetails />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
