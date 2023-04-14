@@ -33,14 +33,14 @@ function TvShowTrending() {
     infinite: false,
     speed: 1000,
     slidesToShow: 7,
-    slidesToScroll: 4,
-    initialSlide: 0,
+    slidesToScroll: 7,
+    initialSlide: 7,
     responsive: [
       {
         breakpoint: 2000,
         settings: {
           slidesToShow: 7,
-          slidesToScroll: 6,
+          slidesToScroll: 7,
           infinite: false,
           dots: false,
         },
@@ -67,8 +67,8 @@ function TvShowTrending() {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 6,
-          initialSlide: 1,
+          slidesToScroll: 4,
+          initialSlide: 4,
         },
       },
       {
@@ -76,7 +76,7 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 1,
+          initialSlide: 3,
         },
       },
       {
@@ -84,14 +84,14 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 1,
+          initialSlide: 3,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
         },
       },
     ],
