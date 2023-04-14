@@ -74,7 +74,7 @@ function TvShowTrending() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 3,
           initialSlide: 1,
         },
