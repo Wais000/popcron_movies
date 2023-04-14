@@ -6,6 +6,7 @@ import { fetchData } from "../globle/moviesApi";
 import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { BsArrowDownLeftSquareFill } from "react-icons/bs";
 
 
 
@@ -48,6 +49,7 @@ function Banner() {
                 />
               </div>
               <div className="posterImage__overlay">
+                <div className="bannerInfo">
                 <div className="posterImage__title">
                   {movie ? movie.original_title : ""}
                 </div>
@@ -55,13 +57,13 @@ function Banner() {
                   {movie ? movie.release_date : ""}
                   <span className="posterImage__rating">
                     {movie ? movie.vote_average : ""}
-                    <i className="fas fa-star" />{" "}
+                  {" "}
                   </span>
                 </div>
                 <div className="posterImage__description">
-                  {movie ? movie.overview : ""}
+                  {movie ? movie.overview.substring(0,240) : ""}
                 </div>
-                  
+                </div>
               </div>
             </Link>
             

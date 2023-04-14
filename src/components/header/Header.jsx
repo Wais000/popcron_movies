@@ -16,14 +16,19 @@ const Header = () => {
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/multi/${query}`);
-     
+      setQuery("");
+      event.target.value = ""
+      event.current.focus()
     }
     
   };
   const qeuryHandler = (e) => {
     setQuery(e.target.value);
    
+  };
 
+  const clearInput = () => {
+    setQuery("");
   };
 
   return (
@@ -59,16 +64,17 @@ const Header = () => {
           </li>
         </ul>
         <div class="search-box">
-          <button type="reset" class="btn-search">
+          <button type="reset" class="btn-search" >
             <GoSearch />
           </button>
           <input
-            type="text"
+            type="submite"
             className="input-search"
             required="required"
             placeholder="Type the name.."
             onChange={qeuryHandler}
             onKeyDown={searchQueryHandler}
+            onFocus={clearInput}
           />
         </div>
       </div>

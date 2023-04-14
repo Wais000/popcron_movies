@@ -62,7 +62,7 @@ function Search() {
                         </p>
                         <p>
                           {searchResults
-                            ? searchResults.vote_average 
+                            ? searchResults.vote_average.toFixed(1)
                             : ""}
                         </p>
                       </div>
@@ -72,7 +72,7 @@ function Search() {
                           <RiMovie2Fill />
                         </p>
                        
-                        <p> {searchResults ? searchResults.release_date :""}</p>
+                        <p> {searchResults ? searchResults.release_date || searchResults.first_air_date  : ""}</p>
 
                      
                       </div>
@@ -80,8 +80,8 @@ function Search() {
                     <p>
                       {" "}
                       {searchResults
-                        ? searchResults.title ||
-                          searchResults.name
+                        ?searchResults.name ||searchResults.title .substring(0,9)
+                          
                         : ""}{" "}
                     </p>
                   </div>

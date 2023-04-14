@@ -4,17 +4,15 @@
   height: 600px;
   background-color: var(--black);
   display: flex;
-  align-items: center;
+  // align-items: center;
   position: relative;
   justify-content: center;
   margin: 0;
- 
 }
 
 .posterImage {
-  height: 75vh;
-
-
+  height: 600px;
+  border: 2px solid rgb(255, 221, 0);
 }
 
 .posterImage > img {
@@ -25,17 +23,16 @@
 
 .posterImage__overlay {
   position: absolute;
-  padding: 5rem;
+  padding: 20vh 5vw 0vh 5vw;
   bottom: 0px;
-  height: 90%;
+  height: 600px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: flex-end;
-  align-items: flex-start;
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(44, 68, 83));
   opacity: 1;
   transition: opacity 0.5s;
+  border: 2px solid darkblue;
 }
 
 .posterImage__overlay:hover {
@@ -44,206 +41,196 @@
 
 .posterImage__title {
   font-weight: 900;
-  font-size: 4rem;
+  font-size: calc(30px + 0.390625vw);
   margin-bottom: 0.4rem;
   text-align: left;
 }
 
 .posterImage__runtime {
-  font-size: 2rem;
+  font-size: calc(25px + 0.320625vw);
+  margin-bottom: calc(1rem + 2vh);
+  text-align: left;
   margin-bottom: 1rem;
+  border: 2px solid red;
 }
 
 .posterImage__rating {
   margin-left: 3rem;
+  font-size: calc(25px + 0.320625vw);
 }
 
 .posterImage__description {
   font-style: italic;
   font-size: 1rem;
+  font-size: calc(17px + 0.150625vw);
   margin-bottom: 0.25rem;
   display: flex;
   text-align: left;
-  width: 50%;
+  width: 60%;
+  border: 1px solid red;
 }
 
-// .searchInput {
-//     position: absolute;
-//     // right: -50%;
-//     left: 250px;
-//     top: 250px;
-//     display: flex;
-//     align-items: center;
-//     width: 40%;
-//     z-index: 2;
-//     border: 2px solid red;
-//     input {
-//         width: calc(90% - 90px);
-//         height: 70px;
-//         background: rgba(255, 249, 249, 0.555);
-//         backdrop-filter: blur(3.5px);
-//         -webkit-backdrop-filter: blur(4px);
-//         outline: 0;
-//         border: 0;
-//         border-radius: 30px 0 0 30px;
-//         padding: 0 15px;
-//         font-size: 14px;
-//     }}
-//     button {
-//         width: 140px;
-//         height: 70px;
-//         background: $font-secondary;
-//         color: white;
-//         outline: 0;
-//         border: 0;
-//         border-radius: 0 30px 30px 0;
-//         font-size: 16px;
-//         cursor: pointer;
-//     }
-.wellcome{
-  display: flex;
-  align-items: center;
- flex-direction: column;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  .wellcomPop{
-    font-size:40px ;
-    font-weight: 700 bolder;
-    color: white;
-    // border: 3px solid red;
-  }
-
-  .subSentence{
-    font-size:25px;
-    color: white;
-  }
+.subSentence {
+  font-size: 25px;
+  color: white;
 }
 
-
-.inputbox {
-  height: $size;
-  width: 40%;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-
-  input {
+@media (min-width: 200px) {
+  .posterImage__description {
     width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    font-size: 16px;
-    padding: ($size - 16 - 1)/2 0;
-    border: 0;
-    background: rgba(255, 249, 249, 0.697);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(4px);
-    width: $size;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 100%;
-
-    transition: width $speed ease-in-out, border-radius $speed ease-in-out,
-      padding $speed/2;
-    transition-delay: 0s, $speed, 0s;
-    box-shadow: 0 0 0 $stroke $primary-colorTow;
-    color: inherit;
-    cursor: pointer;
-    padding: ($size - 16 - 1)/2 0;
-    padding-right: $size;
-    font-weight: bold;
-    font-size: $font-SecodarySize;
-    // font-family: "Montserrat";
-
-    &:focus,
-    &:valid {
-      width: 100%;
-      transition-delay: $speed, 0s, $speed;
-      outline: 0;
-      border-radius: 40px;
-      cursor: text;
-      padding-left: ($size - 16 - 1)/2;
-
-
-      + .del {
-        pointer-events: all;
-        left: calc(100% - #{$size/2});
-        transition-delay: $speed;
-        background:$primary-color;
-        width: 60px;
-        height: 60px;
-        color: #fff;
-     
-        &:focus {
-          box-shadow: 0 0 0 1px $primary-colorTow;
-          height: $size/6 * 3;
-          width: $size/6 * 3;
-        }
-        &:before {
-          transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
-          transition-delay: 0s;
-    
-        }
-        &:after {
-          transform: translate(-50%, -50%) rotate(45deg) scaleY(0.7);
-          transition-delay: $speed/2;
-        }
-      }
-    }
   }
-
-  .del {
+  .poster {
+    border: 2px solid rgb(255, 221, 0);
+    height: 30vh;
+  }
+  .posterImage {
+    height: 30vh;
+    border: 2px solid darkolivegreen;
+  }
+  .posterImage__overlay {
     position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: $size + 2;
-    width: $size + 1;
-    padding: 0;
-    background: none;
-    border-radius: 100%;
-    border: 0;
-  
-    pointer-events: none;
-    transition: left $speed ease-in-out;
-    transition-delay: 0s;
-    color: inherit;
-    cursor: pointer;
+    padding: 11vh 5vw 0vh 5vw;
+    border: 3px solid darkorchid;
+    top: 0;
+    height: 30vh;
+  }
+  .posterImage__title {
+    font-size: 18px;
+  }
+  .posterImage__runtime,
+  .posterImage__rating {
+    font-size: 15px;
+    margin: 0;
+  }
+  .posterImage__description {
+    font-size: 13px;
+  }
+}
 
-    &:focus {
-      outline: none;
-    }
+@media (min-width: 600px) {
+  .posterImage__description {
+    width: 95%;
+  }
+  .poster {
+    border: 2px solid rgb(255, 221, 0);
+    height: 40vh;
+  }
+  .posterImage {
+    height: 40vh;
+    border: 2px solid darkolivegreen;
+  }
+  .posterImage__overlay {
+    position: absolute;
+    padding: 15vh 5vw 0vh 5vw;
+    border: 3px solid darkorchid;
+    top: 0;
+    height: 40vh;
+  }
+  .posterImage__title {
+    font-size: 22px;
+  }
+  .posterImage__runtime,
+  .posterImage__rating {
+    font-size: 18px;
+  }
+  .posterImage__description {
+    font-size: 15px;
+  }
+}
 
-    &:before {
-      content: "";
-      position: absolute;
-      // border: 2px solid white;
-      top: 50%;
-      left: 50%;
-      background: currentColor;
-      width: $stroke;
-      height: $size/4 * 3;
-      transform: translate($size/8 * 5 + 1, $size/8 * 5 + 1)
-        translate(-50%, -50%) rotate(-45deg) scaleY(1);
-      transition: transform $speed/2 ease-in-out;
-      transition-delay: $speed * 1.5;
-    }
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      background: currentColor;
-      width: $stroke;
-      height: $size/4 * 3;
-      transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
-      transition: transform $speed/2 ease-in-out;
-      transition-delay: $speed;
-    }
+@media (min-width: 768px) {
+  .posterImage__description {
+    width: 95%;
+  }
+  .poster {
+    border: 2px solid rgb(255, 221, 0);
+    height: 50vh;
+  }
+  .posterImage {
+    height: 50vh;
+    border: 2px solid darkolivegreen;
+  }
+  .posterImage__overlay {
+    position: absolute;
+    padding: 15vh 5vw 0vh 5vw;
+    border: 3px solid darkorchid;
+    top: 0;
+    height: 50vh;
+  }
+  .posterImage__title {
+    font-size: 22px;
+  }
+  .posterImage__runtime,
+  .posterImage__rating {
+    font-size: 18px;
+  }
+  .posterImage__description {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .posterImage__description {
+    width: 70%;
+  }
+  .poster {
+    width: 100%;
+    height: 60vh;
+  }
+  .posterImage__overlay {
+    position: absolute;
+    padding: 24vh 5vw 0vh 5vw;
+    height: 60vh;
+  }
+  .posterImage {
+    height: 60vh;
+  }
+  .posterImage__title {
+    font-size: 25px;
+  }
+  .posterImage__runtime,
+  .posterImage__rating {
+    font-size: 20px;
+  }
+  .posterImage__description {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .posterImage__description {
+    width: 60%;
+  }
+  .posterImage {
+    height: 70vh;
+    border: 2px solid greenyellow;
+  }
+  .posterImage__overlay {
+    position: absolute;
+    padding: 28vh 5vw 0vh 5vw;
+    height: 70vh;
+  }
+  .poster {
+    height: 70vh;
+  }
+}
+
+@media (min-width: 1280px) {
+  .posterImage__description {
+    width: 50%;
+  }
+  .posterImage {
+    height: 80vh;
+    border: 2px solid greenyellow;
+  }
+  .posterImage__overlay {
+    position: absolute;
+    padding: 28vh 5vw 0vh 5vw;
+    border: 3px solid darkorchid;
+    top: 0;
+    height: 80vh;
+  }
+  .poster {
+    height: 80vh;
   }
 }

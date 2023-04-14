@@ -18,8 +18,9 @@
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       padding-top:7%;
-      justify-content: space-between;
+      // justify-content: space-between;
     }
     .searchCaroselBox {
       width: 230px;
@@ -49,6 +50,7 @@ margin-top: 2%;
         padding: 0% 5% 5% 5%;
         height: 100px;
         margin-bottom: 1% ;
+
         .cardInfoSearch{
             color: white;
             width: 100%;
