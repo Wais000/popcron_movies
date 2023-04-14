@@ -304,11 +304,13 @@ background: $primary-color;
     padding: 10px;
   }
   .MovieShortInfo{
-border: 1px solid rebeccapurple;
+
     width: 100%;
     .shortDetails{
       width: 100%;
 
+display: flex;
+flex-wrap: wrap;
       padding: 0;
       li{
         padding: 0px;
@@ -321,8 +323,17 @@ border: 1px solid rebeccapurple;
       }
     }
   }
-  .movieGenres span{
+  .movieGenres{
+    display: flex;
+    flex-wrap: wrap;
+  
+     span{
     padding: 5px 10px 5px 10px;
     width: 80px;
+  }
+  }
+  .movieDetails{
+
+    margin: 10% 0% 10% 0%;
   }
 }
