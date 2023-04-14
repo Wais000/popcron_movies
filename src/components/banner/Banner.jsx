@@ -69,24 +69,7 @@ function Banner() {
             
           ))}
       </Carousel>
-     {/* <div className="wellcome">
-      <span className="wellcomPop">Welcome to Popcron</span>
-      <br/>
-      <span className="subSentence">where you'll find all the latest infos about your favorite films and Tv shows !</span>
-     </div> */}
-      {/* <form className="inputbox">
-        <input
-        required="required"
-          type="text"
-          class="input"
-          name="txt"
-          onmouseout="this.value = ''; this.blur();"
-          placeholder="Search for a movie or tv show...."
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyUp={searchQueryHandler}
-        />
- <button type="reset" class="del"></button>
-      </form>{" "} */}
+
 
  
       </div>
