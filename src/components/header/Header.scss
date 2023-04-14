@@ -219,3 +219,39 @@ header li:hover {
   // border-bottom:1px solid rgba(255,255,255,.5);
   transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
+
+
+@media (max-width: 575px){
+.headerLists{
+
+  width: 390px;
+  justify-content:space-evenly;
+  margin: 0;
+}
+.header{
+  padding: 0;
+
+ 
+
+}
+.nav-items{
+  padding: 0;
+  font-size: 13px;
+  width: 80%;
+
+}
+.logo{
+  width: 18%;
+}
+.btn-search:focus ~ .input-search{
+  width:100%;
+}
+.input-search:focus{
+  width: 100%;
+}
+.input-search::placeholder{
+ 
+  font-size: 12px;
+
+}
+}

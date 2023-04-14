@@ -262,7 +262,7 @@ function SwitchTab() {
         </div>
       ) : value === "popular" ? (
         <div className="popularContainer">
-        <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Tv Show list</h2>
+        <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Popular Movies</h2>
           <Slider {...settings}>
             {popular.results &&
               popular.results.map((pop) => (
