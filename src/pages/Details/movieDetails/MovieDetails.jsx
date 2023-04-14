@@ -105,7 +105,7 @@ function MovieDetails() {
               </div>
             </div>
             <div className="movieDetails">
-              <h3 className="synopsisTitle"> Overview </h3>
+              <h3 className="synopsisTitle"> Overview: </h3>
               <p>{links ? links.overview : ""}</p>
             </div>
           </div>

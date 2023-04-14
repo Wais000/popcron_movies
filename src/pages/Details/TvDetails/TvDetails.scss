@@ -144,15 +144,20 @@
     align-items: center;
     justify-content: center;
 }
-.season{
+.seasons{
     width: 90%;
     margin: 4% auto;
     display: flex;
     flex-wrap: wrap;
-    padding-top:7%;
+    // padding-top:7%;
     justify-content: space-between;
-    border: 1px solid red;
-}
+    h2{text-align: center;
+        // border: 1px solid red;
+
+        margin: 0% auto 1%;
+        color: #f3ce13;
+}}
+
 
 .seasonsContainer{
 width: 100%;
