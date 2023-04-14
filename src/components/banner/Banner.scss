@@ -12,7 +12,6 @@
 
 .posterImage {
   height: 600px;
-  border: 2px solid rgb(255, 221, 0);
 }
 
 .posterImage > img {
@@ -32,7 +31,6 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgb(44, 68, 83));
   opacity: 1;
   transition: opacity 0.5s;
-  border: 2px solid darkblue;
 }
 
 .posterImage__overlay:hover {
@@ -51,7 +49,6 @@
   margin-bottom: calc(1rem + 2vh);
   text-align: left;
   margin-bottom: 1rem;
-  border: 2px solid red;
 }
 
 .posterImage__rating {
@@ -67,7 +64,6 @@
   display: flex;
   text-align: left;
   width: 60%;
-  border: 1px solid red;
 }
 
 .subSentence {
@@ -80,19 +76,16 @@
     width: 100%;
   }
   .poster {
-    border: 2px solid rgb(255, 221, 0);
-    height: 30vh;
+    height: 40vh;
   }
   .posterImage {
-    height: 30vh;
-    border: 2px solid darkolivegreen;
+    height: 40vh;
   }
   .posterImage__overlay {
     position: absolute;
     padding: 11vh 5vw 0vh 5vw;
-    border: 3px solid darkorchid;
     top: 0;
-    height: 30vh;
+    height: 40vh;
   }
   .posterImage__title {
     font-size: 18px;
@@ -112,17 +105,14 @@
     width: 95%;
   }
   .poster {
-    border: 2px solid rgb(255, 221, 0);
     height: 40vh;
   }
   .posterImage {
     height: 40vh;
-    border: 2px solid darkolivegreen;
   }
   .posterImage__overlay {
     position: absolute;
     padding: 15vh 5vw 0vh 5vw;
-    border: 3px solid darkorchid;
     top: 0;
     height: 40vh;
   }
@@ -143,17 +133,14 @@
     width: 95%;
   }
   .poster {
-    border: 2px solid rgb(255, 221, 0);
     height: 50vh;
   }
   .posterImage {
     height: 50vh;
-    border: 2px solid darkolivegreen;
   }
   .posterImage__overlay {
     position: absolute;
     padding: 15vh 5vw 0vh 5vw;
-    border: 3px solid darkorchid;
     top: 0;
     height: 50vh;
   }
@@ -203,7 +190,6 @@
   }
   .posterImage {
     height: 70vh;
-    border: 2px solid greenyellow;
   }
   .posterImage__overlay {
     position: absolute;
@@ -221,12 +207,10 @@
   }
   .posterImage {
     height: 80vh;
-    border: 2px solid greenyellow;
   }
   .posterImage__overlay {
     position: absolute;
     padding: 28vh 5vw 0vh 5vw;
-    border: 3px solid darkorchid;
     top: 0;
     height: 80vh;
   }
