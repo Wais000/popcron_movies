@@ -101,11 +101,11 @@ function TvDetails() {
                   </ul>
                 </div>
 
-                <div className="movie__genres">
+                <div className="movieGenres">
                   {links && links.genres
                     ? links.genres.map((genre) => (
                         <>
-                          <span className="movie__genre" id={genre.id}>
+                          <span className="movieGenre" id={genre.id}>
                             {genre.name}
                           </span>
                         </>
@@ -113,9 +113,9 @@ function TvDetails() {
                     : ""}
                 </div>
               </div>
-              <div className="movie__detailRightBottom">
-                <div className="synopsisText">Synopsis</div>
-                <div>{links ? links.overview : ""}</div>
+              <div className="movieDetails">
+              <h3 className="synopsisTitle"> Overview: </h3>
+              <p>{links ? links.overview : ""}</p>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ function TvDetails() {
           {/* <Slider {...settings}> */}
           <div className="seasons" >
             
-            <h1>More Seasons</h1>
+            <h2>More Seasons</h2>
             <div className="seasonsContainer">
             {links.seasons &&
               links.seasons.map((season) => (
