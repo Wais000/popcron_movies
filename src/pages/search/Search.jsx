@@ -27,16 +27,11 @@ function Search() {
     searchResults();
   }, [query]);
 
-  // const releaseTV = results.map((newItem) => {
-  //   const oldItem = newItem.first_air_date.substr(0, 4);
-  //   return oldItem;
-  // });
-
 
   return (
     <div className="searchMainContainer">
       {isLoading ? (
-        <h2>Popcorn...</h2>
+        <h2 className="loading">Popcorn...</h2>
       ) : (<>
             {searchRersult.results &&
         searchRersult.results.map((searchResults) => (
