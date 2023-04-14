@@ -30,7 +30,7 @@ function TvShowTrending() {
   // console.log("i am the type of TvShowTrending", TvShowTrending);
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 1000,
     slidesToShow: 7,
     slidesToScroll: 4,
@@ -66,9 +66,9 @@ function TvShowTrending() {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 6,
-          initialSlide: 6,
+          initialSlide: 1,
         },
       },
       {
@@ -76,7 +76,7 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 3,
-          initialSlide: 2,
+          initialSlide: 1,
         },
       },
       {
@@ -84,14 +84,14 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 3,
+          initialSlide: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],

@@ -35,15 +35,15 @@ function Footer() {
 </div>
 
 <div class="footer-center"
-style={{
-  display:'flex', alignItems:'center', flexDirection:'column'
-}}>
+>
 <p class="footer-company-about">
-    <span>Contact us</span>
+    
   </p>
   <div style={{
-      display:'flex', alignItems:'center'
+      display:'flex', alignItems:'center',
+      
     }}>
+      
     <HiLocationMarker style={{
       marginRight:'8px', color:'#ffff', fontSize:'15px'
     }}/>
@@ -53,6 +53,9 @@ style={{
   <div style={{
       display:'flex', alignItems:'center'
     }} >
+        <p class="footer-company-about">
+    <span>About Popcorn</span>
+  </p>
     <HiPhoneMissedCall style={{
       marginRight:'8px', color:'#ffff', fontSize:'15px'
     }}/>
