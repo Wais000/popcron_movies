@@ -172,13 +172,8 @@ background: $primary-color;
   display: flex;
   justify-content: space-between;
   width: 75%;
-  border: 3px solid green;
+  // border: 3px solid green;
 }
-
-// .movie__heading {
-//     font-size: 2.2rem;
-//     border: 3px solid green;
-// }
 
 .movie__Button {
   display: flex;
@@ -246,4 +241,41 @@ background: $primary-color;
 }
 .ComapanyLogos {
   width: 80%;
+}
+
+@media (max-width: 600px){
+.movieName{
+  font-size: 20px;
+  margin: 5% auto;
+}
+.movieShortMessage p{
+  font-size: 15px;
+  margin-bottom: 3%;
+}
+.shortDetails li{
+  font-size: 12px;
+  margin-bottom: 3%;
+}
+.movieGenres{
+  width: 100%;
+  // border: 1px solid red;
+  span{
+    width: 20%;
+    font-size: 13px;
+  }
+}
+.movieDetails{
+  margin-bottom: 4%;
+  h3{font-size:20px ;}
+  p{
+    font-size: 13px;
+   line-height: 19px;
+  }
+}
+.movieProductionCompanies h2{
+  font-size: 20px;
+}
+.moviePosterBox{
+  margin: 7% auto;
+}
 }
