@@ -276,12 +276,53 @@ background: $primary-color;
   font-size: 20px;
 }
 .moviePosterBox{
-  margin: 7% auto;
-  padding-left: 6%;
+  margin: 10% auto;
+ margin-left: 13%;
+  // border: 1px solid rebeccapurple;
 }
 .movieDetail{
   width: 90%;
   padding: 1%;
 
 }
+}
+@media (max-width: 448px){
+  .moviePosterBox{
+    width: 250px;
+    align-items: center;
+    margin: 35% auto;
+    margin-bottom: 4%;
+   margin-left: 18%;
+    // border: 1px solid rgb(108, 15, 131);
+  }
+  .moviePoster{
+    width: 240px;
+    margin: 15% auto;
+  }
+  .movieDetailRight{
+    border: none;
+    padding: 10px;
+  }
+  .MovieShortInfo{
+
+    width: 100%;
+    .shortDetails{
+      width: 100%;
+
+      padding: 0;
+      li{
+        padding: 0px;
+        padding-right: 2%;
+      }
+      li span{
+        font-size: 11px;
+  
+        margin: 0;
+      }
+    }
+  }
+  .movieGenres span{
+    padding: 5px 10px 5px 10px;
+    width: 80px;
+  }
 }
