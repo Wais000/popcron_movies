@@ -34,7 +34,10 @@ function Footer() {
  
 </div>
 
-<div class="footer-center">
+<div class="footer-center"
+style={{
+  display:'flex', alignItems:'center', flexDirection:'column'
+}}>
 <p class="footer-company-about">
     <span>Contact us</span>
   </p>
