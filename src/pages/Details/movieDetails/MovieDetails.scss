@@ -17,7 +17,7 @@
 //   height: auto;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 4% 0%;
+  margin: 4% 0% 4% 0%;
   background-color: rgba(22, 35, 43, 0.626);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(5px);
@@ -277,5 +277,11 @@ background: $primary-color;
 }
 .moviePosterBox{
   margin: 7% auto;
+  padding-left: 6%;
+}
+.movieDetail{
+  width: 90%;
+  padding: 1%;
+
 }
 }
