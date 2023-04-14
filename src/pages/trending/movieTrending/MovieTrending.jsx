@@ -64,7 +64,7 @@ function MovieTrending() {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 6,
+          slidesToScroll: 5,
           initialSlide: 1,
         },
       },
@@ -73,7 +73,7 @@ function MovieTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 1,
+          initialSlide: 2,
         },
       },
       {

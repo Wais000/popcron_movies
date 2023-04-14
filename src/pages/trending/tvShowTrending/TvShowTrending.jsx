@@ -33,14 +33,14 @@ function TvShowTrending() {
     infinite: false,
     speed: 1000,
     slidesToShow: 7,
-    slidesToScroll: 7,
-    initialSlide: 7,
+    slidesToScroll: 4,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 2000,
         settings: {
           slidesToShow: 7,
-          slidesToScroll: 7,
+          slidesToScroll: 6,
           infinite: false,
           dots: false,
         },
@@ -67,8 +67,8 @@ function TvShowTrending() {
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-          initialSlide: 4,
+          slidesToScroll: 5,
+          initialSlide: 1,
         },
       },
       {
@@ -76,7 +76,7 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 3,
+          initialSlide: 2,
         },
       },
       {
@@ -84,20 +84,20 @@ function TvShowTrending() {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          initialSlide: 3,
+          initialSlide: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
     ],
   };
   return (
-    <div className="mainContainer">
+    <div className="mainContainerTv">
      
       <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Tv Show list</h2>
       {isLoading ? (
