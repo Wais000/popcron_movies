@@ -159,20 +159,13 @@ function SwitchTab() {
           >
             popular
           </button>
-          {/* top_rated */}
-          {/* </li> */}
-          {/* <li menueItems onClick={navigateToLists} value="upcomming">
-            Upcomming
-          </li>
-          <li menueItems onClick={navigateToLists} value="popular">
-            Popular
-          </li> */}
+
         </ul>
       </div>
 
       {value === "top-rated" ? (
         <div className="topRateContainer">
-          <h2>Top Rated Movies</h2>
+         <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Top rate Movies</h2>
           {/* <h2>top rated Movies</h2> */}
 
           <Slider {...settings}>
@@ -220,7 +213,7 @@ function SwitchTab() {
         </div>
       ) : value === "upcomming" ? (
         <div className="upcommingContainer">
-          <h2>Upcomming Movies</h2>
+          <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Upcoming Movies list</h2>
           <Slider {...settings}>
             {upcoming.results &&
               upcoming.results.map((comming) => (
@@ -269,7 +262,7 @@ function SwitchTab() {
         </div>
       ) : value === "popular" ? (
         <div className="popularContainer">
-          <h2>Popular Movies</h2>
+        <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Tv Show list</h2>
           <Slider {...settings}>
             {popular.results &&
               popular.results.map((pop) => (

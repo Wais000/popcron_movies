@@ -95,7 +95,7 @@ function MovieTrending() {
   };
   return (
     <div className="mainContainer">
-      <h1>Movies list</h1>
+      <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2>
     <Slider {...settings}>
       {MovieTrending.results &&
         MovieTrending.results.map((movieTrend) => (

@@ -22,7 +22,7 @@
 
 .posterImage__overlay {
   position: absolute;
-  padding: 20vh 5vw 0vh 5vw;
+  padding: 25vh 5vw 0vh 5vw;
   bottom: 0px;
   height: 600px;
   display: flex;
@@ -39,13 +39,13 @@
 
 .posterImage__title {
   font-weight: 900;
-  font-size: calc(30px + 0.390625vw);
+  font-size: calc(35px + 0.390625vw);
   margin-bottom: 0.4rem;
   text-align: left;
 }
 
 .posterImage__runtime {
-  font-size: calc(25px + 0.320625vw);
+  font-size: calc(28px + 0.320625vw);
   margin-bottom: calc(1rem + 2vh);
   text-align: left;
   margin-bottom: 1rem;
@@ -53,13 +53,13 @@
 
 .posterImage__rating {
   margin-left: 3rem;
-  font-size: calc(25px + 0.320625vw);
+  font-size: calc(28px + 0.320625vw);
 }
 
 .posterImage__description {
   font-style: italic;
-  font-size: 1rem;
-  font-size: calc(17px + 0.150625vw);
+  // font-size: 1rem;
+  font-size: calc(20px + 0.150625vw);
   margin-bottom: 0.25rem;
   display: flex;
   text-align: left;

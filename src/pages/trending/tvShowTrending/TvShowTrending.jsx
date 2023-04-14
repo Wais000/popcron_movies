@@ -99,7 +99,7 @@ function TvShowTrending() {
   return (
     <div className="mainContainer">
      
-      <h1>Tv Shows list</h1>
+      <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Tv Show list</h2>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
