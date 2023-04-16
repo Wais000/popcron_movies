@@ -162,7 +162,8 @@ function TvDetails() {
                 <div className="seasonCaroselBox" key={season.id}>
                   <Link
                     style={{ textDecoration: "none", color: "white" }}
-                    to={`/seasonDetail/${season.id}`}
+                    to={"#"}
+                    // `/seasonDetail/${season.id}`
                   >
                     <div className="seasonsCardInner">
                       <div className="seasonsCardTop">
