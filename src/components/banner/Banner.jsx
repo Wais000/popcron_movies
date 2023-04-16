@@ -34,6 +34,7 @@ function Banner() {
         transitionTime={3}
         infiniteLoop={true}
         showStatus={false}
+        className="carouselContainer"
       >
         {popular.results &&
           popular.results.map((movie) => (
