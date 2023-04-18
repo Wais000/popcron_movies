@@ -132,6 +132,7 @@ function MovieDetails() {
               </>
             ))}
         </div>
+
       </div>)} 
     </>
     

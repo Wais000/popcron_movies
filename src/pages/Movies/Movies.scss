@@ -1,0 +1,23 @@
+@import "../../components/globle/colors.scss";
+.rate {
+  display: flex;
+  align-items: center;
+  background: none;
+}
+
+.mainContainerMovies {
+//   border: 2px solid olivedrab;
+padding-top: 8%;
+  width: 90%;
+  margin: 0% auto 5%;
+//   margin: 0% 0% 5% 0% ;
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
+align-items: center;
+justify-content: center;
+}
+.movieBox{
+
+    width: 250px;
+}

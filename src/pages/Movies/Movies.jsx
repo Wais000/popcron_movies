@@ -5,53 +5,67 @@ import { useEffect, useState } from "react";
 // import useGenre from "../../hooks/useGenre";
 // import CustomPagination from "../../components/Pagination/CustomPagination";
 import { fetchData } from "../../components/globle/moviesApi";
-import { getCategories } from "../../components/features/movieSlice/movieSlice";
+import { geMovieTrending } from "../../components/features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { AiFillStar } from "react-icons/ai";
+import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import './Movies.scss';
 
 
 function Movies() {
-const [genres, setGenres] = useState([]);
-//   const [selectedGenres, setSelectedGenres] = useState([]);
-//   const [page, setPage] = useState(1);
-//   const [content, setContent] = useState([]);
-//   const [numOfPages, setNumOfPages] = useState();
-//   const genreforURL = useGenre(selectedGenres);
-
-  const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.movies);
-  useEffect(() => {
-    MoviesApi();
-  }, [dispatch]);
-
-
-  const MoviesApi = () => {
-    fetchData("/genre/movie/list").then((Response) => {
-      console.log("I am the response of gener", Response);
-      dispatch(getCategories(Response));
-    });
-  };
-  console.log("i am the type of geners", typeof categories);
-
-
+  // const dispatch = useDispatch();
+  const {MovieTrending} = useSelector((state) => state.movies);
+  console.log(" I am the data for movie section", MovieTrending);
 
   return (
-    <div >
-        <h2>title</h2>
-
-        {
-        categories.genres &&
-          categories.genres.map((genre) => (
-            <Link style={{textDecoration:"none",color:"white"}}  >
-            <dive key={genre.id}>
-                <h2>name:{genre.name}</h2>
-            </dive>
-           
+    <div className="mainContainerMovies">
+      {/* <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2> */}
+ 
+      {MovieTrending.results &&
+        MovieTrending.results.map((movies) => (
          
+          <div className="movieBox" key={movies.id}>
+            <Link
+            style={{ textDecoration: "none", color: "white"}}
+            to={`/MovieTrending/${movies.id}`}>
+              <div className="cardInner">
+                <div className="cardTop">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${
+                      movies && movies.poster_path
+                    }`}
+                  />
+                </div>
+              
+
+              <div className="cardBottomSwitch">
+                <div className="cardInfoSwitch">
+                  <div className="rateReleaseSwitch">
+                    <div className="rateSwitch">
+                    <p className="iconOne">
+                               
+                                <AiFillStar />
+                              </p>
+                      <p> {movies ? movies.vote_average.toFixed(1) : ""}</p>
+                    </div>
+                    <div className="releaseSwitch">
+                    <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                      <p> {movies ? movies.release_date.substr(0,4) : ""}</p>
+                    </div>
+                  </div>
+                  <p>{movies ? movies.original_title.substr(0,19) : ""}</p>
+                </div>
+                </div>
+              </div>
             </Link>
-          
-          ) )}
-    </div>
+          </div>
+        
+        ))}
+ 
+      </div>
 
 
   )

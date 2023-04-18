@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Header.scss";
@@ -9,9 +9,13 @@ const Header = () => {
   const [list, setList] = useState("");
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+
   const navigateToLists = (e) => {
     setList(e.target.value);
   };
+  const navigateToMoviePage = useCallback(() => {
+    navigate("/Movies");
+  }, [navigate]);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
@@ -44,17 +48,16 @@ const Header = () => {
           />
         </Link>
         <ul className="nav-items">
-          <li
-            menuItem
-            onClick={navigateToLists}
+          <li className=" menuItem"
+           
+            onClick={navigateToMoviePage}
             id="movie"
             variant="primary"
             key="movie"
           >
             Movies
           </li>
-          <li
-            menuItem
+          <li className="menuItem"
             onClick={navigateToLists}
             id="tvShows"
             variant="primary"
