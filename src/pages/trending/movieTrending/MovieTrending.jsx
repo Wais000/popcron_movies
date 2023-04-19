@@ -14,17 +14,28 @@ import "slick-carousel/slick/slick-theme.css";
 
 function MovieTrending() {
     const Dispatch = useDispatch();
+    const [page, setPage]= useState(1)
   const { MovieTrending } = useSelector((state) => state.movies);
   useEffect(() => {
     movieLists();
+  
   }, [Dispatch]);
 
+useEffect(()=>{
+  pageHandler()
+}, [])
+
   const movieLists = () => {
-    fetchData("/movie/now_playing").then((Response) => {
+    fetchData(`/trending/movie/week?page=${page}`).then((Response) => {
       Dispatch(getMovieTrending(Response));
     });
   };
   console.log("this api comes from latest movie", MovieTrending);
+
+const pageHandler =()=>{
+  setPage(page + 1)
+}
+
   const settings = {
     dots: false,
     infinite: false,
@@ -122,16 +133,16 @@ function MovieTrending() {
                                
                                 <AiFillStar />
                               </p>
-                      <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
+                      <p> {movieTrend ? movieTrend.vote_average : ""}</p>
                     </div>
                     <div className="releaseSwitch">
                     <p className="iconTow">
                                 <RiMovie2Fill />
                               </p>
-                      <p> {movieTrend ? movieTrend.release_date.substr(0,4) : ""}</p>
+                      <p> {movieTrend ? movieTrend.release_date : ""}</p>
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.original_title.substr(0,19) : ""}</p>
+                  <p>{movieTrend ? movieTrend.original_title : ""}</p>
                 </div>
                 </div>
               </div>
@@ -140,6 +151,7 @@ function MovieTrending() {
         
         ))}
     </Slider>
+    <button onClick={pageHandler}>Page:{page}</button>
       </div>
    
   );

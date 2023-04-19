@@ -13,6 +13,7 @@ function Search() {
   const dispatch = useDispatch();
   const { searchRersult } = useSelector((state) => state.movies);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage]= useState(1)
   const { query } = useParams();
 
   const searchResults = () => {
@@ -26,6 +27,9 @@ function Search() {
   useEffect(() => {
     searchResults();
   }, [query]);
+  const pageHandler =()=>{
+    setPage(page + 1)
+  }
 
 
   return (
@@ -83,6 +87,7 @@ function Search() {
                 </div>{" "}
               </div>
             </Link>
+            <button onClick={pageHandler}>Page:{page}</button>
           </div>
         ))}</> )}
 
