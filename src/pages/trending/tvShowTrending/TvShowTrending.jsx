@@ -1,9 +1,8 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../../components/globle/moviesApi";
-import {  getTvShowTrending } from "../../../components/features/movieSlice/movieSlice";
+import { getTvShowTrending } from "../../../components/features/movieSlice/movieSlice";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
-import { BsStarFill } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -14,8 +13,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 function TvShowTrending() {
   // const [endpoint, setEndpoint] = useState("movie");
-    const Dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(true);
+  const Dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const { TvShowTrending } = useSelector((state) => state.movies);
   useEffect(() => {
     tvShowTrending();
@@ -98,61 +97,65 @@ function TvShowTrending() {
   };
   return (
     <div className="mainContainerTv">
-     
-      <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Tv Show list</h2>
+      <h2 style={{ color: "#FFD464", marginBottom: "1%" }}>Tv Show list</h2>
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-    <Slider {...settings}>
-      {TvShowTrending.results &&
-        TvShowTrending.results.map((movieTrend) => (
-         
-          <div className="caroselBox" key={movieTrend.id}>
-            <Link
-                 style={{ textDecoration: "none", color: "white" }}
-                 to={`/TvShowTrending/${movieTrend.id}`}
-          >
-              <div className="cardInner">
-                <div className="cardTop">
-                  <img
-                    src={`https://image.tmdb.org/t/p/original${
-                      movieTrend && movieTrend.poster_path
-                    }`}
-                  />
-                </div>
-              
-
-              <div className="cardBottomSwitch">
-                <div className="cardInfoSwitch">
-                  <div className="rateReleaseSwitch">
-                    <div className="rateSwitch">
-                    <p className="iconOne">
-                                {" "}
-                                <AiFillStar />
-                              </p>
-                      <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
+        <Slider {...settings}>
+          {TvShowTrending.results &&
+            TvShowTrending.results.map((movieTrend) => (
+              <div className="caroselBox" key={movieTrend.id}>
+                <Link
+                  style={{ textDecoration: "none", color: "white" }}
+                  to={`/TvShowTrending/${movieTrend.id}`}
+                >
+                  <div className="cardInner">
+                    <div className="cardTop">
+                      <img
+                        src={`https://image.tmdb.org/t/p/original${
+                          movieTrend && movieTrend.poster_path
+                        }`}
+                      alt="trending_Poster"/>
                     </div>
-                    <div className="releaseSwitch">
-                    <p className="iconTow">
-                                <RiMovie2Fill />
-                              </p>
-                              <p> {movieTrend ? movieTrend.first_air_date.substr(0,4) : ""}</p>
-                     
+
+                    <div className="cardBottomSwitch">
+                      <div className="cardInfoSwitch">
+                        <div className="rateReleaseSwitch">
+                          <div className="rateSwitch">
+                            <p className="iconOne">
+                              {" "}
+                              <AiFillStar />
+                            </p>
+                            <p>
+                              {" "}
+                              {movieTrend
+                                ? movieTrend.vote_average.toFixed(1)
+                                : ""}
+                            </p>
+                          </div>
+                          <div className="releaseSwitch">
+                            <p className="iconTow">
+                              <RiMovie2Fill />
+                            </p>
+                            <p>
+                              {" "}
+                              {movieTrend
+                                ? movieTrend.first_air_date.substr(0, 4)
+                                : ""}
+                            </p>
+                          </div>
+                        </div>
+                        <p>{movieTrend ? movieTrend.name.substr(0, 19) : ""}</p>
+                      </div>
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.name.substr(0, 19) : ""}</p>
-                </div>
-                </div>
+                </Link>
               </div>
-            </Link>
-          </div>
-        
-        ))}
-    </Slider>
-    )}
-      </div>
-   
+            ))}
+        </Slider>
+      )}
+    </div>
   );
 }
 
-export default TvShowTrending
+export default TvShowTrending;

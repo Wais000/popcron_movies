@@ -15,6 +15,7 @@ import SearchDetails from "./pages/Details/searchDetails/SearchDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SeasonDetails from "./pages/Details/searchDetails/SearchDetails";
 import Movies from "./pages/Movies/Movies";
+import TvShows from "./pages/TvShows/TvShows";
 
 function App() {
   
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Movies/"element={<Movies />} />
+          <Route path="/TvShows/"element={<TvShows />} />
           <Route path="/Banner/:id" element={<MovieDetails />} />
           <Route path="/search/multi/:query" element={<Search />} />
           <Route path="/search/:id" element={<SearchDetails />} />

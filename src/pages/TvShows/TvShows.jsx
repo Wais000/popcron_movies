@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../../components/globle/moviesApi";
-import { getMovieTrending } from "../../components/features/movieSlice/movieSlice";
+import { getTvShowTrending } from "../../components/features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import "./Movies.scss";
+// import "./Movies.scss";
 
-function Movies() {
+function TvShows() {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const { MovieTrending } = useSelector((state) => state.movies);
+  const { TvShowTrending } = useSelector((state) => state.movies);
   const resultsPerPage = 10;
 
   useEffect(() => {
-    movieLists();
+    tvLists();
   }, [dispatch, currentPage]);
 
-  const movieLists = () => {
-    fetchData(`/trending/movie/week?page=${currentPage}`).then((response) => {
-      dispatch(getMovieTrending(response));
+  const tvLists = () => {
+    fetchData(`/trending/tv/week?page=${currentPage}`).then((response) => {
+      dispatch(getTvShowTrending(response));
       setTotalPages(Math.ceil(response.total_results / resultsPerPage));
+      console.log("I am tv shows page", response);
     });
+   
   };
 
   const pageHandler = (page) => {
@@ -31,9 +33,9 @@ function Movies() {
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-  
+
     const maxPages = Math.min(totalPages, 25);
-  
+
     for (let i = 1; i <= maxPages; i++) {
       if (i === currentPage) {
         pageNumbers.push(
@@ -43,11 +45,16 @@ function Movies() {
         );
       } else {
         pageNumbers.push(
-          <div style={{
-       display:'inline-block',marginRight:'5px', width: '20px', color:'white', cursor: 'pointer', textAlign:'center'
-
-
-          }}>
+          <div
+            style={{
+              display: "inline-block",
+              marginRight: "5px",
+              width: "20px",
+              color: "white",
+              cursor: "pointer",
+              textAlign: "center",
+            }}
+          >
             <p key={i} onClick={() => pageHandler(i)}>
               {i}
             </p>
@@ -55,24 +62,24 @@ function Movies() {
         );
       }
     }
-  
+
     return pageNumbers;
   };
 
   return (
     <div className="mainContainerMovies">
-      {MovieTrending.results &&
-        MovieTrending.results.map((movies) => (
-          <div className="movieBox" key={movies.id}>
+      {TvShowTrending.results &&
+        TvShowTrending.results.map((tvs) => (
+          <div className="movieBox" key={tvs.id}>
             <Link
               style={{ textDecoration: "none", color: "white" }}
-              to={`/MovieTrending/${movies.id}`}
+              to={`/TvShowTrending/${tvs.id}`}
             >
               <div className="cardInner">
                 <div className="cardTop">
                   <img
                     src={`https://image.tmdb.org/t/p/original${
-                      movies && movies.poster_path
+                      tvs && tvs.poster_path
                     }`}
                   />
                 </div>
@@ -84,42 +91,34 @@ function Movies() {
                         <p className="iconOne">
                           <AiFillStar />
                         </p>
-                        <p> {movies ? movies.vote_average.toFixed(1) : ""}</p>
+                        <p> {tvs ? tvs.vote_average.toFixed(1) : ""}</p>
                       </div>
                       <div className="releaseSwitch">
                         <p className="iconTow">
                           <RiMovie2Fill />
                         </p>
-                        <p> {movies ? movies.release_date.substr(0, 4) : ""}</p>
+                        <p> {tvs ? tvs.first_air_date.substr(0, 4) : ""}</p>
                       </div>
                     </div>
-                    <p>{movies ? movies.original_title.substr(0, 19) : ""}</p>
+                    <p>{tvs ? tvs.name.substr(0, 19) : ""}</p>
                   </div>
                 </div>
               </div>
             </Link>
           </div>
-          
         ))}
-<div className="pagination" style={{ width: '80%', display:'flex', justifyContent:'center'}} >
- 
-
-  <div >
-    {/* <ul style={{ display:'flex', flexDirection:'row', border:'2px solid red', listStyle:'none'}}> */}
-      <p className="pageNumber" > {renderPageNumbers()} </p>
-    {/* </ul> */}
-  
-    
-    
-     
-   
-  </div>
-
-  
-</div>
+      <div
+        className="pagination"
+        style={{ width: "80%", display: "flex", justifyContent: "center" }}
+      >
+        <div>
+          {/* <ul style={{ display:'flex', flexDirection:'row', border:'2px solid red', listStyle:'none'}}> */}
+          <p className="pageNumber"> {renderPageNumbers()} </p>
+          {/* </ul> */}
+        </div>
+      </div>
     </div>
-    
   );
 }
 
-export default Movies;
+export default TvShows;

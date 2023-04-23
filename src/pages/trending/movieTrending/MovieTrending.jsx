@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../../components/globle/moviesApi";
 import { getMovieTrending } from "../../../components/features/movieSlice/movieSlice";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
-import { BsStarFill } from "react-icons/bs";
+
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -14,27 +14,23 @@ import "slick-carousel/slick/slick-theme.css";
 
 function MovieTrending() {
     const Dispatch = useDispatch();
-    const [page, setPage]= useState(1)
+
   const { MovieTrending } = useSelector((state) => state.movies);
   useEffect(() => {
     movieLists();
   
   }, [Dispatch]);
 
-useEffect(()=>{
-  pageHandler()
-}, [])
+
 
   const movieLists = () => {
-    fetchData(`/trending/movie/week?page=${page}`).then((Response) => {
+    fetchData(`/trending/movie/week`).then((Response) => {
       Dispatch(getMovieTrending(Response));
     });
   };
   console.log("this api comes from latest movie", MovieTrending);
 
-const pageHandler =()=>{
-  setPage(page + 1)
-}
+
 
   const settings = {
     dots: false,
@@ -133,16 +129,16 @@ const pageHandler =()=>{
                                
                                 <AiFillStar />
                               </p>
-                      <p> {movieTrend ? movieTrend.vote_average : ""}</p>
+                      <p> {movieTrend ? movieTrend.vote_average.toFixed(1) : ""}</p>
                     </div>
                     <div className="releaseSwitch">
                     <p className="iconTow">
                                 <RiMovie2Fill />
                               </p>
-                      <p> {movieTrend ? movieTrend.release_date : ""}</p>
+                      <p> {movieTrend ? movieTrend.release_date.substr(0, 4) : ""}</p>
                     </div>
                   </div>
-                  <p>{movieTrend ? movieTrend.original_title : ""}</p>
+                  <p>{movieTrend ? movieTrend.original_title.substr(0, 19) : ""}</p>
                 </div>
                 </div>
               </div>
@@ -151,7 +147,7 @@ const pageHandler =()=>{
         
         ))}
     </Slider>
-    <button onClick={pageHandler}>Page:{page}</button>
+
       </div>
    
   );

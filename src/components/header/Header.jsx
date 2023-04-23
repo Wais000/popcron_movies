@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Header.scss";
@@ -16,19 +16,20 @@ const Header = () => {
   const navigateToMoviePage = useCallback(() => {
     navigate("/Movies");
   }, [navigate]);
+  const navigateToTvPage = useCallback(() => {
+    navigate("/TvShows");
+  }, [navigate]);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/multi/${query}`);
       setQuery("");
-      event.target.value = ""
-      event.current.focus()
+      event.target.value = "";
+      event.current.focus();
     }
-    
   };
   const qeuryHandler = (e) => {
     setQuery(e.target.value);
-   
   };
 
   const clearInput = () => {
@@ -48,8 +49,8 @@ const Header = () => {
           />
         </Link>
         <ul className="nav-items">
-          <li className=" menuItem"
-           
+          <li
+            className=" menuItem"
             onClick={navigateToMoviePage}
             id="movie"
             variant="primary"
@@ -57,8 +58,9 @@ const Header = () => {
           >
             Movies
           </li>
-          <li className="menuItem"
-            onClick={navigateToLists}
+          <li
+            className="menuItem"
+            onClick={navigateToTvPage}
             id="tvShows"
             variant="primary"
             key="tvShows"
@@ -67,7 +69,7 @@ const Header = () => {
           </li>
         </ul>
         <div class="search-box">
-          <button type="reset" class="btn-search" >
+          <button type="reset" class="btn-search">
             <GoSearch />
           </button>
           <input
