@@ -45,6 +45,7 @@ function App() {
           <Route path="/search/multi/:query" element={<Search />} />
           <Route path="/search/:id" element={<SearchDetails />} />
           <Route path="/SwitchTab/:id" element={<MovieDetails />} />
+          <Route path="/SwitchTabTv/:id" element={<TvDetails />} />
           <Route path="/search/movie/:id" element={<MovieDetails />} />
           <Route path="/search/tv/:id" element={<TvDetails />} />
           <Route path="/search/:id" element={<MovieDetails />} />

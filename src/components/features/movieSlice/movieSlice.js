@@ -7,6 +7,9 @@ export const moviesSlice = createSlice({
     popular: {},
     topRated: {},
     upcoming: {},
+    tvPopular: {},
+    tvTopRated: {},
+    tvUpcoming: {},
     MovieTrending: {},
     TvShowTrending: {},
     seasonsDetail: {},
@@ -29,6 +32,15 @@ export const moviesSlice = createSlice({
     },
     getUpcoming: (state, action) => {
       state.upcoming = action.payload;
+    },
+    getTvPopular: (state, action) => {
+      state.tvPopular = action.payload;
+    },
+    getTvTopRated: (state, action) => {
+      state.tvTopRated = action.payload;
+    },
+    getTvUpcoming: (state, action) => {
+      state.tvUpcoming = action.payload;
     },
     getMovieTrending: (state, action) => {
       state.MovieTrending = action.payload;
@@ -55,6 +67,9 @@ export const {
   getUpcoming,
   getTopRated,
   getPopular,
+  getTvUpcoming,
+  getTvTopRated,
+  getTvPopular,
   getMovieTrending,
   getTvShowTrending,
   getGenres,
