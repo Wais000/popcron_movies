@@ -15,12 +15,18 @@ import {
   getTvPopular,
 } from "../features/movieSlice/movieSlice";
 
-function SwitchTab() {
+function SwitchTab({ setIsVisible }) {
   const [value, setValue] = useState("");
 
   const navigateToLists = (e) => {
     setValue(e.target.value);
+    handleClick()
   };
+
+  const handleClick = () => {
+    setIsVisible(false);
+  };
+
   const popDispatch = useDispatch();
   const upDispatch = useDispatch();
   const topDispatch = useDispatch();
@@ -28,7 +34,8 @@ function SwitchTab() {
   const upTvDispatch = useDispatch();
   const topTvDispatch = useDispatch();
 
-  const { popular, topRated, upcoming, tvPopular, tvTopRated, tvUpcoming } = useSelector((state) => state.movies);
+  const { popular, topRated, upcoming, tvPopular, tvTopRated, tvUpcoming } =
+    useSelector((state) => state.movies);
 
   //popular
   const popHandler = () => {
@@ -45,7 +52,7 @@ function SwitchTab() {
     console.log("I am tv Popular", Response);
   };
 
-//upcomming
+  //upcomming
   const upHandler = () => {
     fetchData("/movie/upcoming").then((Response) => {
       upDispatch(getUpcoming(Response));
@@ -54,13 +61,13 @@ function SwitchTab() {
   };
   const upTvHandler = () => {
     fetchData("/tv/on_the_air").then((Response) => {
-      upTvDispatch( getTvUpcoming(Response));
+      upTvDispatch(getTvUpcoming(Response));
     });
     console.log("I am tv upcomming", Response);
   };
 
   //top rate
- 
+
   const ratHandler = () => {
     fetchData("/movie/top_rated").then((Response) => {
       topDispatch(getTopRated(Response));
@@ -74,10 +81,6 @@ function SwitchTab() {
     console.log("I am tv top rated", Response);
   };
 
-
-
-
- 
   useEffect(() => {
     popHandler();
     upHandler();
@@ -85,7 +88,9 @@ function SwitchTab() {
     ratTvHandler();
     upTvHandler();
     popTvHandler();
+
   }, []);
+
 
   const settings = {
     dots: false,
@@ -188,14 +193,12 @@ function SwitchTab() {
           >
             popular
           </button>
-
         </ul>
       </div>
 
       {value === "top-rated" ? (
         <div className="topRateContainer">
-         <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Top Rated</h2>
-        
+          <h2 style={{ color: "#FFD464", marginBottom: "1%" }}>Top Rated</h2>
 
           <Slider {...settings}>
             {topRated.results &&
@@ -221,7 +224,7 @@ function SwitchTab() {
                               </p>
                               <p> {rate ? rate.vote_average : ""}</p>
                             </div>
-                            <p style={{color:'#E16B5A'}}>M</p>
+                            <p style={{ color: "#E16B5A" }}>M</p>
                             <div className="releaseSwitch">
                               <p className="iconTow">
                                 <RiMovie2Fill />
@@ -239,61 +242,63 @@ function SwitchTab() {
                   </div>
                 </Link>
               ))}
-
           </Slider>
 
           {/* tv Top Rated */}
 
-        <Slider {...settings}>
-          {tvTopRated.results &&
-            tvTopRated.results.map((tvRate) => (
-              <Link to={`/SwitchTabTv/${tvRate.id}`}>
-                <div className="caroselBox" key={tvRate.id}>
-                  <div className="cardInner">
-                    <div className="cardTop">
-                      <img
-                        src={`https://image.tmdb.org/t/p/original${
-                          tvRate && tvRate.poster_path
-                        }`}
-                      />
-                    </div>
+          <Slider {...settings}>
+            {tvTopRated.results &&
+              tvTopRated.results.map((tvRate) => (
+                <Link to={`/SwitchTabTv/${tvRate.id}`}>
+                  <div className="caroselBox" key={tvRate.id}>
+                    <div className="cardInner">
+                      <div className="cardTop">
+                        <img
+                          src={`https://image.tmdb.org/t/p/original${
+                            tvRate && tvRate.poster_path
+                          }`}
+                        />
+                      </div>
 
-                    <div className="cardBottomSwitch">
-                      <div className="cardInfoSwitch">
-                        <div className="rateReleaseSwitch">
-                          <div className="rateSwitch">
-                            <p className="iconOne">
-                              {" "}
-                              <AiFillStar />
-                            </p>
-                           
-                            <p> {tvRate ? tvRate.vote_average : ""}</p>
+                      <div className="cardBottomSwitch">
+                        <div className="cardInfoSwitch">
+                          <div className="rateReleaseSwitch">
+                            <div className="rateSwitch">
+                              <p className="iconOne">
+                                {" "}
+                                <AiFillStar />
+                              </p>
+
+                              <p> {tvRate ? tvRate.vote_average : ""}</p>
+                            </div>
+                            <h4 style={{ color: "#E16B5A" }}>T</h4>
+                            <div className="releaseSwitch">
+                              <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                              <p>
+                                {" "}
+                                {tvRate
+                                  ? tvRate.first_air_date.substr(0, 4)
+                                  : ""}
+                              </p>
+                            </div>
                           </div>
-                          <h4 style={{color:'#E16B5A'}}>T</h4>
-                          <div className="releaseSwitch">
-                            <p className="iconTow">
-                              <RiMovie2Fill />
-                            </p>
-                            <p>
-                              {" "}
-                              {tvRate ? tvRate.first_air_date.substr(0, 4) : ""}
-                            </p>
-                          </div>
+                          <p>{tvRate ? tvRate.name.substr(0, 19) : ""}</p>
                         </div>
-                        <p>{tvRate ? tvRate.name.substr(0, 19): ""}</p>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-
-        </Slider>
+                </Link>
+              ))}
+          </Slider>
         </div>
       ) : value === "upcomming" ? (
         <div className="upcommingContainer">
-          <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Upcoming list</h2>
-          
+          <h2 style={{ color: "#FFD464", marginBottom: "1%" }}>
+            Upcoming list
+          </h2>
+
           <Slider {...settings}>
             {upcoming.results &&
               upcoming.results.map((comming) => (
@@ -318,7 +323,7 @@ function SwitchTab() {
                               </p>
                               <p> {comming ? comming.vote_average : ""}</p>
                             </div>
-                            <p style={{color:'#E16B5A'}}>M</p>
+                            <p style={{ color: "#E16B5A" }}>M</p>
                             <div className="releaseSwitch">
                               <p className="iconTow">
                                 <RiMovie2Fill />
@@ -340,57 +345,58 @@ function SwitchTab() {
                 </Link>
               ))}
           </Slider>
-           {/* tv upcomming */}
+          {/* tv upcomming */}
 
-        <Slider {...settings}>
-          {tvUpcoming.results &&
-            tvUpcoming.results.map((tvUp) => (
-              <Link to={`/SwitchTabTv/${tvUp.id}`}>
-                <div className="caroselBox" key={tvUp.id}>
-                  <div className="cardInner">
-                    <div className="cardTop">
-                      <img
-                        src={`https://image.tmdb.org/t/p/original${
-                          tvUp && tvUp.poster_path
-                        }`}
-                      />
-                    </div>
+          <Slider {...settings}>
+            {tvUpcoming.results &&
+              tvUpcoming.results.map((tvUp) => (
+                <Link to={`/SwitchTabTv/${tvUp.id}`}>
+                  <div className="caroselBox" key={tvUp.id}>
+                    <div className="cardInner">
+                      <div className="cardTop">
+                        <img
+                          src={`https://image.tmdb.org/t/p/original${
+                            tvUp && tvUp.poster_path
+                          }`}
+                        />
+                      </div>
 
-                    <div className="cardBottomSwitch">
-                      <div className="cardInfoSwitch">
-                        <div className="rateReleaseSwitch">
-                          <div className="rateSwitch">
-                            <p className="iconOne">
-                              {" "}
-                              <AiFillStar />
-                            </p>
-                           
-                            <p> {tvUp ? tvUp.vote_average : ""}</p>
+                      <div className="cardBottomSwitch">
+                        <div className="cardInfoSwitch">
+                          <div className="rateReleaseSwitch">
+                            <div className="rateSwitch">
+                              <p className="iconOne">
+                                {" "}
+                                <AiFillStar />
+                              </p>
+
+                              <p> {tvUp ? tvUp.vote_average : ""}</p>
+                            </div>
+                            <h4 style={{ color: "#E16B5A" }}>T</h4>
+                            <div className="releaseSwitch">
+                              <p className="iconTow">
+                                <RiMovie2Fill />
+                              </p>
+                              <p>
+                                {" "}
+                                {tvUp ? tvUp.first_air_date.substr(0, 4) : ""}
+                              </p>
+                            </div>
                           </div>
-                          <h4 style={{color:'#E16B5A'}}>T</h4>
-                          <div className="releaseSwitch">
-                            <p className="iconTow">
-                              <RiMovie2Fill />
-                            </p>
-                            <p>
-                              {" "}
-                              {tvUp ? tvUp.first_air_date.substr(0, 4) : ""}
-                            </p>
-                          </div>
+                          <p>{tvUp ? tvUp.name.substr(0, 19) : ""}</p>
                         </div>
-                        <p>{tvUp ? tvUp.name.substr(0, 19): ""}</p>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-        </Slider>
+                </Link>
+              ))}
+          </Slider>
         </div>
-
       ) : value === "popular" ? (
         <div className="popularContainer">
-        <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Popular Movies</h2>
+          <h2 style={{ color: "#FFD464", marginBottom: "1%" }}>
+            Popular Movies
+          </h2>
           <Slider {...settings}>
             {popular.results &&
               popular.results.map((pop) => (
@@ -415,16 +421,14 @@ function SwitchTab() {
                               </p>
                               <p> {pop ? pop.vote_average : ""}</p>
                             </div>
-                            <p style={{color:'#E16B5A'}}>M</p>
+                            <p style={{ color: "#E16B5A" }}>M</p>
                             <div className="releaseSwitch">
-                          
                               <p className="iconTow">
                                 <RiMovie2Fill />
                               </p>
-                             
+
                               <p> {pop ? pop.release_date.substr(0, 4) : ""}</p>
                             </div>
-                           
                           </div>
                           <p>{pop ? pop.title.substr(0, 19) : ""}</p>
                         </div>
@@ -459,12 +463,15 @@ function SwitchTab() {
                               </p>
                               <p> {tvPop ? tvPop.vote_average : ""}</p>
                             </div>
-                            <h4 style={{color:'#E16B5A'}}>T</h4>
+                            <h4 style={{ color: "#E16B5A" }}>T</h4>
                             <div className="releaseSwitch">
                               <p className="iconTow">
                                 <RiMovie2Fill />
                               </p>
-                              <p> {tvPop ? tvPop.first_air_date.substr(0, 4) : ""}</p>
+                              <p>
+                                {" "}
+                                {tvPop ? tvPop.first_air_date.substr(0, 4) : ""}
+                              </p>
                             </div>
                           </div>
                           <p>{tvPop ? tvPop.name.substr(0, 19) : ""}</p>

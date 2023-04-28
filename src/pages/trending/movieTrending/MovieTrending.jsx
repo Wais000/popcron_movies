@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchData } from "../../../components/globle/moviesApi";
 import { getMovieTrending } from "../../../components/features/movieSlice/movieSlice";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
-
+import TvShowTrending from "../tvShowTrending/TvShowTrending";
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -11,14 +11,21 @@ import './MovieTrending.scss';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SwitchTab from "../../../components/switchTab/SwitchTab";
 
 function MovieTrending() {
     const Dispatch = useDispatch();
+    const [isVisible, setIsVisible] = useState(true);
+
+    const [isOtherComponentVisible, setIsOtherComponentVisible] = useState(false);
+    const handleHideOtherComponent = () => {
+      setIsOtherComponentVisible(true);
+    };
 
   const { MovieTrending } = useSelector((state) => state.movies);
   useEffect(() => {
     movieLists();
-  
+    handleHideOtherComponent()
   }, [Dispatch]);
 
 
@@ -102,12 +109,18 @@ function MovieTrending() {
   };
   return (
     <div className="mainContainer">
-      <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2>
-    <Slider {...settings}>
-      {MovieTrending.results &&
+<div>
+{isOtherComponentVisible && <SwitchTab setIsVisible={setIsVisible} onHide={handleHideOtherComponent} />}
+</div>
+  <div  style={{ display: isVisible ? 'block' : 'none', border: '2px solid red' }}> 
+    <Slider {...settings}
+   >
+{/* <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2> */}
+      {MovieTrending.results && 
         MovieTrending.results.map((movieTrend) => (
-         
-          <div className="caroselBox" key={movieTrend.id}>
+          
+          <div key={movieTrend.id}>
+          
             <Link
             style={{ textDecoration: "none", color: "white"}}
             to={`/MovieTrending/${movieTrend.id}`}>
@@ -145,8 +158,13 @@ function MovieTrending() {
             </Link>
           </div>
         
-        ))}
+        ))} 
+    
     </Slider>
+    </div>
+    <div style={{ display: isVisible ? 'block' : 'none', border:'1px solid red' }}><TvShowTrending  /></div>
+    
+
 
       </div>
    
