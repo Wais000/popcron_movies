@@ -3,23 +3,22 @@ import { fetchData } from "../../components/globle/moviesApi";
 import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
-import { getSearchRersult } from "../../components/features/movieSlice/movieSlice";
+import { getSearchResult } from "../../components/features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Search.scss";
 import Loading from "../../components/loader/Loading";
 
-
 function Search() {
   const dispatch = useDispatch();
   const { searchRersult } = useSelector((state) => state.movies);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage]= useState(1)
+  const [page, setPage] = useState(1);
   const { query } = useParams();
 
   const searchResults = () => {
     fetchData(`/search/multi?query=${query}`).then((Response) => {
-      dispatch(getSearchRersult(Response));
+      dispatch(getSearchResult(Response));
       setIsLoading(false);
     });
     // console.log("I am search query result", searchRersult);
@@ -28,22 +27,23 @@ function Search() {
   useEffect(() => {
     searchResults();
   }, [query]);
-  const pageHandler =()=>{
-    setPage(page + 1)
-  }
 
+  const pageHandler = () => {
+    setPage(page + 1);
+  };
 
   return (
     <div className="searchMainContainer">
-      {isLoading ? (
-       <Loading/>
-      ) : (<>
-            {searchRersult.results &&
+      {searchRersult.results?.length > 0 ? (
         searchRersult.results.map((searchResults) => (
           <div className="searchCaroselBox" key={searchResults.id}>
             <Link
               style={{ textDecoration: "none", color: "white" }}
-              to={searchResults.media_type === 'movie' ? `/search/movie/${searchResults.id}` : `/search/tv/${searchResults.id}`}
+              to={
+                searchResults.media_type === "movie"
+                  ? `/search/movie/${searchResults.id}`
+                  : `/search/tv/${searchResults.id}`
+              }
             >
               <div className="searchCardInner">
                 <div className="searchCardTop">
@@ -62,7 +62,8 @@ function Search() {
                         </p>
                         <p>
                           {searchResults
-                            ? searchResults.vote_average.toFixed(1)
+                            ? searchResults.vote_average
+                            // .toFixed(1)
                             : ""}
                         </p>
                       </div>
@@ -71,28 +72,34 @@ function Search() {
                         <p className="iconTow">
                           <RiMovie2Fill />
                         </p>
-                       
-                        <p> {searchResults ? searchResults.release_date || searchResults.first_air_date  : ""}</p>
 
-                     
+                        <p>
+                          {" "}
+                          {searchResults
+                            ? searchResults.release_date ||
+                              searchResults.first_air_date
+                            : ""}
+                        </p>
                       </div>
                     </div>
                     <p>
                       {" "}
                       {searchResults
-                        ?searchResults.name ||searchResults.title .substring(0,9)
-                          
+                        ? searchResults.name ||
+                          searchResults.title
+                          .substring(0, 9)
                         : ""}{" "}
                     </p>
                   </div>
                 </div>{" "}
               </div>
             </Link>
-         
           </div>
-        ))}</> )}
-
-         </div>
+        ))
+      ) : (
+        <h1 className="no_page_found" style={{color:'#FFD464'}}>No result found, please try again</h1>
+      )}
+    </div>
   );
 }
 

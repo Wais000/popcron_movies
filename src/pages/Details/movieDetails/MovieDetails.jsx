@@ -8,6 +8,7 @@ import { MdStarRate } from "react-icons/md";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { RiMovie2Fill } from "react-icons/ri";
 import "./MovieDetails.scss";
+import Loading from "../../../components/loader/Loading";
 
 function MovieDetails() {
   const dispatch = useDispatch();
@@ -27,11 +28,14 @@ function MovieDetails() {
       setIsLoading(false);
     });
   };
+  setTimeout(function () {
+    isLoading();
+  }, 1000);
 
   return (
     <>
        {isLoading ? (
-        <h2>Popcorn...</h2>
+        <Loading/>
       ) : ( <div
         className="movie"
         style={{

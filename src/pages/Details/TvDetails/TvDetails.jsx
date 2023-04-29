@@ -10,6 +10,7 @@ import { MdStarRate } from "react-icons/md";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import Loading from "../../../components/loader/Loading";
 function TvDetails() {
   // const [movieId, setMovieID]=useState("")
   const dispatch = useDispatch();
@@ -33,12 +34,14 @@ function TvDetails() {
 
   //carosel settings
 
-
+  setTimeout(function () {
+    isLoading();
+  }, 1000);
 
   return (
     <>
       {isLoading ? (
-        <h2>Popcorn...</h2>
+        <Loading/>
       ) : (
         <div
           className="movie"

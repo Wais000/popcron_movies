@@ -3,6 +3,7 @@ import { getUrl } from "../../../components/features/movieSlice/movieSlice";
 import { fetchData } from "../../../components/globle/moviesApi";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import Loading from "../../../components/loader/Loading";
 
 // import './MovieDetails.scss'
 
@@ -25,11 +26,13 @@ function SearchDetails() {
       setIsLoading(false);
     });
   };
-
+  setTimeout(function () {
+    isLoading();
+  }, 1000);
   return (
     <>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading/>
       ) : (
         <div className="movie">
           <div className="movie__intro">

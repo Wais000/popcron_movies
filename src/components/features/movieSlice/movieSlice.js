@@ -54,7 +54,7 @@ export const moviesSlice = createSlice({
     getGenres: (state, action) => {
       state.genres = action.payload;
     },
-    getSearchRersult: (state, action) => {
+    getSearchResult: (state, action) => {
       state.searchRersult = action.payload;
     },
   },
@@ -73,7 +73,7 @@ export const {
   getMovieTrending,
   getTvShowTrending,
   getGenres,
-  getSearchRersult,
+  getSearchResult,
   getSeasonsDetail,
 } = moviesSlice.actions;
 

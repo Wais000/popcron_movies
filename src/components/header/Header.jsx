@@ -10,6 +10,7 @@ const Header = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
+
   const navigateToLists = (e) => {
     setList(e.target.value);
   };
@@ -30,6 +31,7 @@ const Header = () => {
   };
   const qeuryHandler = (e) => {
     setQuery(e.target.value);
+  
   };
 
   const clearInput = () => {

@@ -19,26 +19,30 @@ function TvShows() {
   useEffect(() => {
     tvLists();
   }, [dispatch, currentPage]);
-  setTimeout(function() {
-    setIsLoading(false);
-  }, 1000); 
+
 
   const tvLists = () => {
     fetchData(`/trending/tv/week?page=${currentPage}`).then((response) => {
       dispatch(getTvShowTrending(response));
       setTotalPages(Math.ceil(response.total_results / resultsPerPage));
-      console.log("I am tv shows page", response);
+  
     });
    
   };
 
   const pageHandler = (page) => {
     setCurrentPage(page);
+    window.scrollTo(0, 0);
   };
+
+ 
+  setTimeout(function() {
+    setIsLoading(false);
+  }, 1000); 
 
   const renderPageNumbers = () => {
     const pageNumbers = [];
-
+    // window.scrollTo(0, 0);
     const maxPages = Math.min(totalPages, 25);
 
     for (let i = 1; i <= maxPages; i++) {
@@ -114,17 +118,16 @@ function TvShows() {
               </div>
             </Link>
           </div>
-        ))}</> )}
+        ))}
       <div
         className="pagination"
         style={{ width: "80%", display: "flex", justifyContent: "center" }}
       >
         <div>
-          {/* <ul style={{ display:'flex', flexDirection:'row', border:'2px solid red', listStyle:'none'}}> */}
           <p className="pageNumber"> {renderPageNumbers()} </p>
-          {/* </ul> */}
         </div>
       </div>
+      </> )}
     </div>
   );
 }
