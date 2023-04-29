@@ -243,7 +243,7 @@ function SwitchTab({ setIsVisible }) {
                 </Link>
               ))}
           </Slider>
-
+<br />
           {/* tv Top Rated */}
 
           <Slider {...settings}>
@@ -345,6 +345,7 @@ function SwitchTab({ setIsVisible }) {
                 </Link>
               ))}
           </Slider>
+          <br />
           {/* tv upcomming */}
 
           <Slider {...settings}>
@@ -395,7 +396,7 @@ function SwitchTab({ setIsVisible }) {
       ) : value === "popular" ? (
         <div className="popularContainer">
           <h2 style={{ color: "#FFD464", marginBottom: "1%" }}>
-            Popular Movies
+            Popular List
           </h2>
           <Slider {...settings}>
             {popular.results &&
@@ -438,6 +439,7 @@ function SwitchTab({ setIsVisible }) {
                 </Link>
               ))}
           </Slider>
+          <br />
           {/* Popular */}
           <Slider {...settings}>
             {tvPopular.results &&

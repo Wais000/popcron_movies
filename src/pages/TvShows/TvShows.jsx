@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import Loading from "../../components/loader/Loading";
 // import "./Movies.scss";
 
 function TvShows() {
@@ -13,10 +14,14 @@ function TvShows() {
   const [totalPages, setTotalPages] = useState(1);
   const { TvShowTrending } = useSelector((state) => state.movies);
   const resultsPerPage = 10;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     tvLists();
   }, [dispatch, currentPage]);
+  setTimeout(function() {
+    setIsLoading(false);
+  }, 1000); 
 
   const tvLists = () => {
     fetchData(`/trending/tv/week?page=${currentPage}`).then((response) => {
@@ -68,6 +73,9 @@ function TvShows() {
 
   return (
     <div className="mainContainerMovies">
+            {isLoading ? (
+       <Loading/>
+      ) : (<>
       {TvShowTrending.results &&
         TvShowTrending.results.map((tvs) => (
           <div className="movieBox" key={tvs.id}>
@@ -106,7 +114,7 @@ function TvShows() {
               </div>
             </Link>
           </div>
-        ))}
+        ))}</> )}
       <div
         className="pagination"
         style={{ width: "80%", display: "flex", justifyContent: "center" }}

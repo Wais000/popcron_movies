@@ -7,6 +7,7 @@ import { getSearchRersult } from "../../components/features/movieSlice/movieSlic
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Search.scss";
+import Loading from "../../components/loader/Loading";
 
 
 function Search() {
@@ -35,7 +36,7 @@ function Search() {
   return (
     <div className="searchMainContainer">
       {isLoading ? (
-        <h2 className="loading">Popcorn...</h2>
+       <Loading/>
       ) : (<>
             {searchRersult.results &&
         searchRersult.results.map((searchResults) => (
@@ -87,7 +88,7 @@ function Search() {
                 </div>{" "}
               </div>
             </Link>
-            <button onClick={pageHandler}>Page:{page}</button>
+         
           </div>
         ))}</> )}
 

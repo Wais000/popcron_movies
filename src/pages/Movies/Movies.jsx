@@ -6,14 +6,14 @@ import { AiFillStar } from "react-icons/ai";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./Movies.scss";
-
+import Loading from "../../components/loader/Loading";
 function Movies() {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { MovieTrending } = useSelector((state) => state.movies);
   const resultsPerPage = 10;
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     movieLists();
   }, [dispatch, currentPage]);
@@ -21,10 +21,14 @@ function Movies() {
   const movieLists = () => {
     fetchData(`/trending/movie/week?page=${currentPage}`).then((response) => {
       dispatch(getMovieTrending(response));
-      setTotalPages(Math.ceil(response.total_results / resultsPerPage));
+     
+     setTotalPages(Math.ceil(response.total_results / resultsPerPage));
+  
     });
   };
-
+  setTimeout(function() {
+    setIsLoading(false);
+  }, 1000);
   const pageHandler = (page) => {
     setCurrentPage(page);
   };
@@ -61,6 +65,9 @@ function Movies() {
 
   return (
     <div className="mainContainerMovies">
+          {isLoading ? (
+       <Loading/>
+      ) : (<>
       {MovieTrending.results &&
         MovieTrending.results.map((movies) => (
           <div className="movieBox" key={movies.id}>
@@ -100,7 +107,7 @@ function Movies() {
             </Link>
           </div>
           
-        ))}
+        ))}</> )}
 <div className="pagination" style={{ width: '80%', display:'flex', justifyContent:'center'}} >
  
 

@@ -12,6 +12,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SwitchTab from "../../../components/switchTab/SwitchTab";
+import Loading from "../../../components/loader/Loading";
 
 function MovieTrending() {
     const Dispatch = useDispatch();
@@ -109,14 +110,18 @@ function MovieTrending() {
   };
   return (
     <div className="mainContainer">
-<div>
+<div style={{
+  marginBottom:'4%'
+}}>
 {isOtherComponentVisible && <SwitchTab setIsVisible={setIsVisible} onHide={handleHideOtherComponent} />}
 </div>
-  <div  style={{ display: isVisible ? 'block' : 'none', border: '2px solid red' }}> 
+  <div  style={{ display: isVisible ? 'block' : 'none' }}> 
+  <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2>
     <Slider {...settings}
    >
-{/* <h2 style={{color:'#FFD464', marginBottom:'1%'}}>Movie list</h2> */}
-      {MovieTrending.results && 
+
+      {
+      MovieTrending.results && 
         MovieTrending.results.map((movieTrend) => (
           
           <div key={movieTrend.id}>
@@ -161,8 +166,9 @@ function MovieTrending() {
         ))} 
     
     </Slider>
+    <br />
     </div>
-    <div style={{ display: isVisible ? 'block' : 'none', border:'1px solid red' }}><TvShowTrending  /></div>
+    <div style={{ display: isVisible ? 'block' : 'none' }}><TvShowTrending  /></div>
     
 
 

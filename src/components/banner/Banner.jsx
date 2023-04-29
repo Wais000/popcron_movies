@@ -6,7 +6,7 @@ import { fetchData } from "../globle/moviesApi";
 import { getPopular } from "../features/movieSlice/movieSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { BsArrowDownLeftSquareFill } from "react-icons/bs";
+import Loading from "../loader/Loading";
 
 
 
@@ -16,6 +16,7 @@ function Banner() {
   const { popular } = useSelector((state) => state.movies);
   useEffect(() => {
     popularApi();
+
   }, [dispatch]);
 
   const popularApi = () => {
@@ -26,7 +27,7 @@ function Banner() {
   };
 
 
-  return (
+  return ( 
     <div className="poster">
       <Carousel
         showThumbs={false}
