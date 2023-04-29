@@ -100,7 +100,7 @@
 
   .posterImage__overlay {
     position: absolute;
-    padding: 11vh 5vw 0vh 5vw;
+    padding: 13vh 5vw 0vh 5vw;
     top: 0;
     height: 55vh;
   }
@@ -139,7 +139,7 @@
   }
   .posterImage__overlay {
     position: absolute;
-    padding: 15vh 5vw 0vh 5vw;
+    padding: 22vh 5vw 0vh 5vw;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(44, 68, 83, 0.703));
     top: 0;
     height: 580px;
@@ -268,6 +268,21 @@ height: 340px;
     padding: 28vh 5vw 0vh 5vw;
     top: 0;
     height: 80vh;
+    // border: 1px solid red;
+    .posterImage__title{
+      font-size: 3rem;
+    }
+    .posterImage__runtime{
+      font-size: 35px;
+    }
+    .posterImage__rating{
+      font-size: 35px;
+      margin-left: 4%;
+    }
+    .posterImage__description{
+      font-size: 20px;
+      margin-top: 2%;
+    }
   }
   .poster {
     height: 80vh;

@@ -58,7 +58,7 @@ function Banner() {
                 <div className="posterImage__runtime">
                   {movie ? movie.release_date : ""}
                   <span className="posterImage__rating">
-                    {movie ? movie.vote_average : ""}
+                    {movie ?"Rate:"+" "+ movie.vote_average : ""}
                   {" "}
                   </span>
                 </div>

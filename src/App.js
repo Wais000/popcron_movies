@@ -4,7 +4,6 @@ import './App.scss'
 // import { useSelector, useDispatch } from "react-redux";
 // import { getUrl } from "./components/features/movieSlice/movieSlice";
 import Home from "./pages/home/Home";
-import Explore from "./pages/explore/Explore";
 import MovieDetails from "./pages/Details/movieDetails/MovieDetails";
 import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import Search from "./pages/search/Search";

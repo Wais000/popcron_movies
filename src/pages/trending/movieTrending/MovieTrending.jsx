@@ -76,6 +76,7 @@ function MovieTrending() {
         },
       },
       {
+        
         breakpoint: 992,
         settings: {
           slidesToShow: 4,
